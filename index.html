@@ -1,448 +1,330 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BudakThreads — Auto-Posting Threads Harian. Cuan &amp; Branding Otomatis.</title>
-<meta name="description" content="BudakThreads: Auto-posting Threads harian dengan AI. Generate konten, jadwal posting, auto-reply, dan monitoring real-time. Mulai Rp 99rb/bulan!">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700;9..40,900&amp;family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&amp;display=swap" rel="stylesheet">
-<style>
-*,::before,::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-:root{
-  --gold:#e6a838;--gold-bright:#f2d78e;--gold-deep:#b66a16;
-  --gold-muted:rgba(230,168,56,0.15);--gold-glow:rgba(230,168,56,0.25);
-  --bg-void:#070604;--bg-ink:#0f0d0a;--bg-char:#1f1c17;--bg-surface:#1f1c17;
-  --cream:#f6f6f5;--text-muted:#a9a49b;
-  --border-clr:rgba(230,168,56,0.12);--border-strong:rgba(230,168,56,0.3);
-  --radius:18px;
-}
-body{font-family:'DM Sans',system-ui,-apple-system,sans-serif;background:var(--bg-void);color:var(--cream);line-height:1.6;overflow-x:hidden}
-.container{max-width:1100px;margin:0 auto;padding:0 24px}
-h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-0.5px}
-.section-label{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:16px}
-.section-label::before{content:'';width:24px;height:2px;background:var(--gold)}
-.section-title{font-size:clamp(28px,4.5vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.15;margin-bottom:16px}
-.section-sub{font-size:16px;color:var(--text-muted);max-width:640px;line-height:1.7}
-.grad-text{background:linear-gradient(135deg,var(--gold-bright),var(--gold),var(--gold-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTOMATA — AI yang Kerja, Lo yang Cuan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',sans-serif;background:#050505;color:#e0e0e0;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:688px;margin:0 auto;padding:0 20px}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,6,4,0.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-clr)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:12px 24px;gap:24px}
-.nav-logo{display:flex;align-items:center;gap:8px;font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:var(--cream);text-decoration:none;white-space:nowrap}
-.nav-logo span{color:var(--gold)}
-.nav-links{display:flex;align-items:center;gap:6px}
-.nav-links a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px;transition:.2s}
-.nav-links a:hover{color:var(--cream);background:rgba(255,255,255,0.04)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--bg-void)!important;font-weight:700!important;border-radius:99px!important;padding:8px 20px!important;box-shadow:0 4px 16px rgba(230,168,56,0.3);transition:.3s!important}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,168,56,0.45)!important}
-.nav-toggle{display:none;background:none;border:1px solid var(--border-clr);color:var(--cream);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:20px}
+    /* Reveal */
+    .mn-reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease}
+    .mn-reveal.visible{opacity:1;transform:translateY(0)}
+    .mn-d1{transition-delay:0.15s}
+    .mn-d2{transition-delay:0.3s}
+    .mn-d3{transition-delay:0.45s}
+    .mn-d4{transition-delay:0.6s}
 
-.hero-bg{min-height:100vh;position:relative;padding-top:120px;padding-bottom:80px;overflow:hidden;display:flex;align-items:center}
-.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 20% 30%,rgba(230,168,56,0.08),transparent 70%),radial-gradient(ellipse 400px 300px at 80% 70%,rgba(230,168,56,0.05),transparent 60%),radial-gradient(ellipse 300px 300px at 50% 0%,rgba(230,168,56,0.03),transparent 50%);pointer-events:none}
-.hero-orb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(230,168,56,0.06),transparent 70%);animation:float 20s ease-in-out infinite;pointer-events:none}
-@keyframes float{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-20px) scale(1.05)}66%{transform:translateY(10px) scale(0.95)}}
-.hero-content{position:relative;z-index:2;max-width:780px;margin:0 auto;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:0.5px;color:var(--gold);background:rgba(230,168,56,0.08);border:1px solid rgba(230,168,56,0.2);border-radius:99px;padding:6px 18px;margin-bottom:28px}
-.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.hero-title{font-size:clamp(36px,6vw,68px);font-weight:900;letter-spacing:-2px;line-height:1.08;margin-bottom:20px;font-family:'Fraunces',serif}
-.hero-title .grad-text{font-family:inherit}
-.hero-sub{font-size:clamp(15px,1.3vw,18px);color:var(--text-muted);max-width:600px;margin:0 auto 32px;line-height:1.7}
-.hero-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;padding:14px 28px;border-radius:99px;text-decoration:none;transition:all .3s ease;cursor:pointer;border:none}
-.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--bg-void);box-shadow:0 8px 24px rgba(230,168,56,0.3)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(230,168,56,0.45)}
-.btn-outline{background:transparent;color:var(--cream);border:1.5px solid var(--border-strong)}
-.btn-outline:hover{background:rgba(230,168,56,0.08);border-color:var(--gold);transform:translateY(-3px)}
-.btn-lg{font-size:16px;padding:16px 32px}
-.hero-trust{font-size:13px;color:var(--text-muted);margin-bottom:40px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-.hero-trust span{color:var(--gold)}
-.hero-social{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding:20px;border-radius:var(--radius);background:rgba(255,255,255,0.02);border:1px solid var(--border-clr);max-width:500px;margin:0 auto}
-.hero-avatars{display:flex;align-items:center}
-.hero-avatars svg{margin-right:-8px;flex-shrink:0}
-.hero-avatars .more{width:36px;height:36px;border-radius:50%;border:2px solid var(--bg-void);background:var(--gold);color:var(--bg-void);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}
-.hero-social-text{font-size:13px;color:var(--text-muted);text-align:left}
-.hero-social-text strong{color:var(--cream);font-size:15px}
-.hero-rating{display:flex;align-items:center;gap:4px;color:var(--gold);font-size:14px}
+    /* Hero */
+    .mn-hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden}
+    .mn-hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,0.12) 0%,transparent 70%);pointer-events:none}
+    .mn-hero::after{content:'';position:absolute;bottom:-200px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,0.1) 0%,transparent 70%);pointer-events:none}
+    .mn-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);border-radius:999px;padding:8px 20px;font-size:0.8rem;font-weight:600;color:#c084fc;margin-bottom:32px}
+    .mn-hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#a855f7;animation:pulse-dot 2s infinite}
+    @keyframes pulse-dot{0%,100%{opacity:0.4;transform:scale(0.8)}50%{opacity:1;transform:scale(1.2)}}
+    .mn-hero h1{font-size:2.5rem;font-weight:900;line-height:1.1;letter-spacing:-0.03em;margin-bottom:16px;max-width:600px}
+    .purple{color:#a855f7}
+    .orange{color:#f97316}
+    .mn-hero-sub{font-size:1.05rem;color:#999;max-width:480px;line-height:1.6;margin-bottom:36px}
+    .mn-hero-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:48px}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;font-weight:700;padding:14px 32px;border-radius:16px;font-size:1rem;transition:all 0.3s;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(168,85,247,0.3)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(168,85,247,0.4)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#e0e0e0;font-weight:600;padding:14px 28px;border-radius:16px;font-size:0.95rem;transition:all 0.3s;cursor:pointer}
+    .btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)}
+    .mn-hero-social{display:flex;align-items:center;gap:16px;font-size:0.85rem;color:#777}
+    .mn-hero-social .avatars span{width:32px;height:32px;border-radius:50%;border:2px solid #050505;display:inline-flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;margin-left:-8px}
+    .mn-hero-social .avatars span:first-child{margin-left:0}
+    .mn-hero-social strong{color:#e0e0e0}
 
-.marquee-wrap{padding:28px 0;overflow:hidden;border-top:1px solid var(--border-clr);border-bottom:1px solid var(--border-clr);background:var(--bg-ink)}
-.marquee{display:flex;animation:marquee 30s linear infinite;gap:60px;width:max-content}
-.marquee-item{display:flex;align-items:center;gap:12px;white-space:nowrap;font-size:14px}
-.marquee-item .num{font-weight:900;font-size:20px;color:var(--gold);font-family:'Fraunces',serif}
-.marquee-item .lbl{color:var(--text-muted)}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    /* Marquee */
+    .mn-marquee{overflow:hidden;padding:20px 0;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);white-space:nowrap}
+    .mn-marquee-inner{display:inline-flex;animation:marquee 25s linear infinite}
+    .mn-marquee-inner span{font-size:1.1rem;font-weight:700;color:#333;padding:0 40px;text-transform:uppercase;letter-spacing:0.05em}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-.section-pad{padding:80px 0}
-.section-pad-lg{padding:100px 0}
-.bg-ink{background:var(--bg-ink)}
+    /* Section */
+    .mn-section{padding:60px 0;position:relative}
+    .mn-section-title{font-size:1.75rem;font-weight:800;text-align:center;margin-bottom:12px;line-height:1.2;letter-spacing:-0.02em}
+    .mn-section-sub{text-align:center;font-size:0.95rem;color:#999;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
 
-.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:48px}
-.pain-card{background:var(--bg-surface);border:1px solid var(--border-clr);border-radius:var(--radius);padding:24px;transition:.3s}
-.pain-card:hover{border-color:rgba(230,168,56,0.25);transform:translateY(-3px)}
-.pain-icon{width:44px;height:44px;border-radius:12px;background:rgba(230,168,56,0.1);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
-.pain-card h3{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;margin-bottom:6px}
-.pain-card p{font-size:13px;color:var(--text-muted);line-height:1.6}
+    /* Cases */
+    .mn-cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .mn-case-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:24px;text-align:center;transition:all 0.3s}
+    .mn-case-card:hover{border-color:rgba(168,85,247,0.3);background:rgba(168,85,247,0.03)}
+    .mn-case-number{font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,#a855f7,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .mn-case-label{font-size:0.8rem;color:#888;margin-top:4px;line-height:1.4}
 
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:48px}
-.feature-card{background:var(--bg-surface);border:1px solid var(--border-clr);border-radius:var(--radius);padding:28px;transition:.3s}
-.feature-card:hover{border-color:rgba(230,168,56,0.25);transform:translateY(-3px)}
-.feature-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(230,168,56,0.15),rgba(230,168,56,0.05));display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;flex-shrink:0}
-.feature-card h3{font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px}
-.feature-card p{font-size:14px;color:var(--text-muted);line-height:1.7}
-.feature-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.feature-tags span{font-size:11px;font-weight:600;color:var(--gold);background:rgba(230,168,56,0.08);padding:3px 10px;border-radius:99px}
+    /* Narasi */
+    .mn-narasi-list{list-style:none}
+    .mn-narasi-list li{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+    .mn-narasi-list li:last-child{border-bottom:none}
+    .mn-narasi-num{width:36px;height:36px;border-radius:12px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;color:#a855f7;flex-shrink:0}
+    .mn-narasi-content h5{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+    .mn-narasi-content p{font-size:0.85rem;color:#888;line-height:1.5}
 
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
-.step-card{background:var(--bg-surface);border:1px solid var(--border-clr);border-radius:var(--radius);padding:32px;position:relative;text-align:center}
-.step-num{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--bg-void);font-weight:900;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.step-card h3{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px}
-.step-card p{font-size:13px;color:var(--text-muted);line-height:1.6}
+    /* Chat Demo */
+    .mn-demo-box{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:32px;position:relative;overflow:hidden}
+    .mn-demo-box::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(168,85,247,0.08);pointer-events:none}
+    .mn-chat{border-radius:16px;padding:14px 18px;margin-bottom:10px;max-width:88%;font-size:0.88rem;line-height:1.5;border:1px solid rgba(255,255,255,0.05)}
+    .mn-chat.ai{margin-right:auto;background:rgba(168,85,247,0.06);border-color:rgba(168,85,247,0.12)}
+    .mn-chat.user{margin-left:auto;background:rgba(249,115,22,0.06);border-color:rgba(249,115,22,0.12)}
+    .mn-chat .lbl{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+    .mn-chat.ai .lbl{color:#a855f7}
+    .mn-chat.user .lbl{color:#f97316}
 
-.compare-wrap{overflow-x:auto;margin-top:48px;border-radius:var(--radius);border:1px solid var(--border-clr)}
-.compare-table{width:100%;border-collapse:collapse;font-size:13px}
-.compare-table th{padding:14px 18px;text-align:left;font-weight:700;background:var(--bg-surface);border-bottom:1px solid var(--border-clr);white-space:nowrap}
-.compare-table th:last-child{color:var(--gold)}
-.compare-table td{padding:12px 18px;border-bottom:1px solid var(--border-clr);color:var(--text-muted)}
-.compare-table tr:last-child td{border-bottom:none}
-.compare-table td:first-child{font-weight:600;color:var(--cream);white-space:nowrap}
-.compare-table .yes{color:#2dd4a0}.compare-table .no{color:var(--text-muted);opacity:0.5}
-.compare-table .highlight td{color:var(--cream)}
+    /* Features */
+    .mn-feature-grid{display:grid;gap:16px}
+    .mn-feature-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:28px 24px;transition:all 0.3s}
+    .mn-feature-card:hover{border-color:rgba(168,85,247,0.25);background:rgba(168,85,247,0.02)}
+    .mn-feature-card .icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
+    .mn-feature-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+    .mn-feature-card p{font-size:0.85rem;color:#888;line-height:1.6}
 
-.pricing-card-single{max-width:420px;margin:48px auto 0;background:linear-gradient(160deg,rgba(230,168,56,0.08),var(--bg-surface) 60%);border:1px solid var(--gold-muted);border-radius:var(--radius);padding:40px 32px;text-align:center;position:relative;box-shadow:0 0 0 1px rgba(230,168,56,0.15),0 20px 60px rgba(230,168,56,0.08)}
-.scarcity-bar{background:rgba(255,255,255,0.06);border-radius:99px;height:8px;overflow:hidden;margin-bottom:12px}
-.scarcity-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));width:78%}
-.scarcity-text{font-size:12px;color:var(--gold);font-weight:600;margin-bottom:20px}
-.price-old{font-size:18px;color:var(--text-muted);text-decoration:line-through;margin-bottom:2px}
-.price-current{font-size:52px;font-weight:900;font-family:'Fraunces',serif;letter-spacing:-2px;color:var(--cream)}
-.price-current span{font-size:18px;font-weight:600;color:var(--text-muted)}
-.price-period{font-size:13px;color:var(--text-muted);margin-bottom:24px}
-.pricing-features{list-style:none;text-align:left;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
-.pricing-features li{font-size:14px;display:flex;align-items:center;gap:10px}
-.pricing-features li::before{content:'\u2713';color:var(--gold);font-weight:700;flex-shrink:0}
-.pricing-features li.no::before{content:'\u2715';color:var(--text-muted)}
-.pricing-features li.no{color:var(--text-muted)}
-.countdown-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px}
-.countdown-item{text-align:center}
-.countdown-num{font-family:'Fraunces',serif;font-weight:900;font-size:28px;color:var(--gold);line-height:1}
-.countdown-lbl{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
-.countdown-sep{font-size:24px;color:var(--gold);font-weight:700;margin-top:-8px}
+    /* Testimonials */
+    .mn-testi-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:24px;transition:all 0.3s}
+    .mn-testi-card:hover{border-color:rgba(168,85,247,0.2)}
+    .mn-testi-stars{color:#fbbf24;font-size:0.85rem;margin-bottom:12px}
+    .mn-testi-text{font-size:0.9rem;color:#bbb;line-height:1.6;margin-bottom:16px;font-style:italic}
+    .mn-testi-author{display:flex;align-items:center;gap:12px}
+    .mn-testi-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem}
+    .mn-testi-name{font-size:0.85rem;font-weight:600}
+    .mn-testi-role{font-size:0.75rem;color:#777}
 
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:48px}
-.testi-card{background:var(--bg-surface);border:1px solid var(--border-clr);border-radius:var(--radius);padding:28px;position:relative}
-.testi-card .quote{font-family:'Fraunces',serif;font-size:56px;position:absolute;top:12px;right:20px;color:var(--gold);opacity:0.1;line-height:0.5}
-.testi-stars{color:var(--gold);font-size:13px;margin-bottom:12px}
-.testi-text{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;font-style:italic}
-.testi-author{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--border-clr)}
-.testi-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
-.testi-name{font-size:14px;font-weight:600}
-.testi-role{font-size:12px;color:var(--text-muted)}
+    /* Compare */
+    .mn-compare-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+    .mn-compare-table th{text-align:left;padding:14px 16px;font-weight:700;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:#888;border-bottom:1px solid rgba(255,255,255,0.08)}
+    .mn-compare-table th:last-child{text-align:center;color:#a855f7}
+    .mn-compare-table td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.04);color:#bbb}
+    .mn-compare-table td:last-child{text-align:center}
+    .mn-compare-table .check{color:#a855f7;font-weight:700}
+    .mn-compare-table .cross{color:#555}
 
-.bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:48px}
-.bonus-card{background:var(--bg-surface);border:1px solid var(--border-clr);border-radius:var(--radius);padding:24px;text-align:center;position:relative;transition:.3s}
-.bonus-card:hover{border-color:rgba(230,168,56,0.25);transform:translateY(-3px)}
-.bonus-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--bg-void);font-size:10px;font-weight:800;padding:4px 14px;border-radius:99px;white-space:nowrap;text-transform:uppercase;letter-spacing:0.5px}
-.bonus-icon{font-size:36px;margin-bottom:12px;margin-top:8px}
-.bonus-card h3{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;margin-bottom:6px}
-.bonus-card p{font-size:13px;color:var(--text-muted);line-height:1.6}
-.bonus-value{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--gold);background:rgba(230,168,56,0.08);padding:3px 12px;border-radius:99px}
+    /* Pricing */
+    .mn-pricing-card{background:linear-gradient(180deg,rgba(168,85,247,0.06) 0%,rgba(255,255,255,0.02) 100%);border:1px solid rgba(168,85,247,0.2);border-radius:24px;padding:40px 28px;text-align:center;position:relative;overflow:hidden}
+    .mn-pricing-card::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,0.1) 0%,transparent 70%);pointer-events:none}
+    .mn-pricing-badge{display:inline-block;background:linear-gradient(135deg,#a855f7,#f97316);color:#fff;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:6px 18px;border-radius:999px;margin-bottom:20px}
+    .mn-pricing-strike{font-size:0.9rem;color:#555;text-decoration:line-through;margin-bottom:4px}
+    .mn-pricing-price{font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,#a855f7,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+    .mn-pricing-period{font-size:0.85rem;color:#888;margin-bottom:24px}
+    .mn-pricing-features{text-align:left;margin-bottom:28px;list-style:none}
+    .mn-pricing-features li{display:flex;align-items:center;gap:10px;font-size:0.85rem;color:#bbb;padding:8px 0}
+    .mn-pricing-features li span{color:#a855f7;font-weight:700;flex-shrink:0}
 
-.guarantee-wrap{text-align:center;padding:60px 24px;background:var(--bg-ink);border-top:1px solid var(--border-clr);border-bottom:1px solid var(--border-clr)}
-.guarantee-icon{font-size:52px;margin-bottom:16px}
-.guarantee-wrap h2{font-size:clamp(22px,3vw,36px);margin-bottom:12px}
-.guarantee-wrap p{font-size:14px;color:var(--text-muted);max-width:500px;margin:0 auto;line-height:1.7}
+    /* FAQ */
+    .mn-faq-item{border-bottom:1px solid rgba(255,255,255,0.05);padding:16px 0}
+    .mn-faq-btn{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;color:#e0e0e0;font-size:0.95rem;font-weight:600;cursor:pointer;padding:4px 0;text-align:left;font-family:inherit}
+    .mn-faq-btn:focus{outline:none}
+    .mn-faq-icon{transition:transform 0.3s;color:#a855f7;font-size:1.2rem;flex-shrink:0}
+    .mn-faq-item.active .mn-faq-icon{transform:rotate(45deg)}
+    .mn-faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;color:#888;font-size:0.9rem;line-height:1.6}
+    .mn-faq-item.active .mn-faq-answer{max-height:300px;padding-top:12px}
 
-.faq-list{max-width:700px;margin:48px auto 0;display:flex;flex-direction:column;gap:8px}
-.faq-item{background:var(--bg-surface);border:1px solid var(--border-clr);border-radius:12px;overflow:hidden}
-.faq-q{width:100%;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:14px;font-weight:600;color:var(--cream);background:none;border:none;text-align:left;font-family:'DM Sans',sans-serif;transition:.2s}
-.faq-q:hover{color:var(--gold)}
-.faq-q .arrow{font-size:16px;transition:transform .3s;color:var(--gold);flex-shrink:0;margin-left:12px}
-.faq-q.active .arrow{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px}
-.faq-a.open{max-height:400px;padding:0 20px 18px}
-.faq-a p{font-size:14px;color:var(--text-muted);line-height:1.7}
+    /* Final CTA */
+    .mn-final-cta{text-align:center;padding:80px 20px;position:relative}
+    .mn-final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,0.08) 0%,transparent 70%);pointer-events:none}
+    .mn-final-cta h2{font-size:2rem;font-weight:900;margin-bottom:12px}
+    .mn-final-cta p{color:#888;margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto}
 
-.final-cta{text-align:center;padding:80px 24px;background:linear-gradient(135deg,rgba(230,168,56,0.06),transparent);border-top:1px solid var(--border-clr)}
-.final-cta h2{font-size:clamp(26px,4vw,44px);margin-bottom:12px}
-.final-cta p{font-size:15px;color:var(--text-muted);margin-bottom:28px}
+    /* Footer */
+    .mn-footer{border-top:1px solid rgba(255,255,255,0.05);padding:32px 20px;text-align:center;font-size:0.8rem;color:#555}
 
-footer{background:var(--bg-ink);border-top:1px solid var(--border-clr);padding:40px 24px;text-align:center}
-footer p{font-size:13px;color:var(--text-muted)}
-
-@media(max-width:768px){
-  .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg-void);border-bottom:1px solid var(--border-clr);padding:16px 24px;gap:4px}
-  .nav-links.open a{padding:10px 14px;font-size:14px}
-  .nav-toggle{display:block}
-  .hero-title{font-size:clamp(28px,10vw,44px);letter-spacing:-1px}
-  .pricing-card-single{padding:28px 20px}
-  .section-pad{padding:60px 0}.section-pad-lg{padding:70px 0}
-}
-@media(max-width:480px){
-  .hero-btns{flex-direction:column;width:100%}
-  .hero-btns .btn{width:100%;justify-content:center}
-  .pain-grid,.features-grid,.steps,.testi-grid{grid-template-columns:1fr}
-}
-</style>
+    @media(max-width:640px){
+      .mn-hero h1{font-size:1.9rem}
+      .mn-section-title{font-size:1.4rem}
+      .mn-pricing-price{font-size:2.8rem}
+      .mn-final-cta h2{font-size:1.5rem}
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">&#x1f916; Budak<span>Threads</span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="#fitur">Fitur</a>
-      <a href="#cara-kerja">Cara Kerja</a>
-      <a href="#testimoni">Testimoni</a>
-      <a href="#harga">Harga</a>
-      <a href="#faq">FAQ</a>
-      <a href="#harga" class="nav-cta">Ambil Akses</a>
+  <!-- HERO -->
+  <section class="mn-hero">
+    <div class="mn-hero-badge mn-reveal">
+      <span class="dot"></span>
+      5 AI Agent — 1 Dashboard
     </div>
-    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">&#x2630;</button>
-  </div>
-</nav>
-
-<section class="hero-bg">
-  <div class="hero-orb" style="width:300px;height:300px;left:-5%;top:10%"></div>
-  <div class="hero-orb" style="width:200px;height:200px;right:10%;bottom:15%;animation-duration:25s"></div>
-  <div class="hero-orb" style="width:120px;height:120px;left:40%;top:60%;animation-duration:15s;background:radial-gradient(circle,rgba(230,168,56,0.04),transparent 70%)"></div>
-  <div class="container hero-content">
-    <div class="hero-badge"><span></span> Powered by AI &#xb7; Auto-Pilot 24/7</div>
-    <h1 class="hero-title">Auto-Posting <span class="grad-text">Threads</span><br>Harian. Cuan &amp; Branding Otomatis.</h1>
-    <p class="hero-sub">Generate konten fresh tiap hari, jadwal posting otomatis, dan monitoring real-time &#x2014; tanpa lo pegang HP. Biarkan AI kerja, lo fokus cuan.</p>
-    <div class="hero-btns">
-      <a href="#harga" class="btn btn-primary btn-lg">Mulai Rp 99rb/bln</a>
-      <a href="#fitur" class="btn btn-outline btn-lg">Lihat Fitur</a>
+    <h1 class="mn-reveal">AI yang <span class="purple">Kerja</span>,<br>Lo yang <span class="orange">Cuan</span></h1>
+    <p class="mn-hero-sub mn-reveal mn-d1">5 AI Agent autopost, customer service, Meta Ads, IHSG, & trend analyzer — jalan 24/7 tanpa lo ngapa2in.</p>
+    <div class="mn-hero-cta mn-reveal mn-d2">
+      <a href="#harga" class="btn-primary">🔥 Ambil Sekarang — Rp 199rb</a>
+      <a href="#fitur" class="btn-secondary">Lihat Fitur ↓</a>
     </div>
-    <div class="hero-trust">
-      <span>&#x2713;</span> Trial 7 hari &nbsp;&#xb7;&nbsp; <span>&#x2713;</span> No ribet &nbsp;&#xb7;&nbsp; <span>&#x2713;</span> Setup 5 menit
-    </div>
-    <div class="hero-social">
-      <div class="hero-avatars">
-        <svg width="36" height="36" viewBox="0 0 36 36"><rect width="36" height="36" fill="#e6a838" rx="18"/><text x="18" y="23" text-anchor="middle" font-size="16" fill="#070604" font-weight="900">A</text></svg>
-        <svg width="36" height="36" viewBox="0 0 36 36"><rect width="36" height="36" fill="#d48a1e" rx="18"/><text x="18" y="23" text-anchor="middle" font-size="16" fill="#070604" font-weight="900">R</text></svg>
-        <svg width="36" height="36" viewBox="0 0 36 36"><rect width="36" height="36" fill="#b66a16" rx="18"/><text x="18" y="23" text-anchor="middle" font-size="16" fill="#070604" font-weight="900">D</text></svg>
-        <div class="more">+2K</div>
+    <div class="mn-hero-social mn-reveal mn-d3">
+      <div class="avatars">
+        <span style="background:#7c3aed;color:#fff">A</span>
+        <span style="background:#f97316;color:#fff">R</span>
+        <span style="background:#7c3aed;color:#fff">D</span>
+        <span style="background:#555;color:#fff">+</span>
       </div>
-      <div class="hero-social-text">
-        <div class="hero-rating">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; <span style="color:var(--cream);margin-left:4px">4.9</span></div>
-        <div><strong>2.847+</strong> pengguna aktif</div>
+      <span><strong>200+</strong> pengguna aktif · <strong>50K+</strong> task otomatis</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mn-marquee">
+    <div class="mn-marquee-inner">
+      <span>🤖 AUTOPOST</span><span>💬 CUSTOMER SERVICE</span><span>📢 META ADS</span><span>📈 IHSG</span><span>🔍 TREND ANALYZER</span>
+      <span>🤖 AUTOPOST</span><span>💬 CUSTOMER SERVICE</span><span>📢 META ADS</span><span>📈 IHSG</span><span>🔍 TREND ANALYZER</span>
+    </div>
+  </div>
+
+  <!-- CASES -->
+  <section class="mn-section">
+    <div class="container">
+      <h2 class="mn-section-title mn-reveal">Bukan <span class="purple">Klaim</span>, Ini <span class="orange">Data</span></h2>
+      <p class="mn-section-sub mn-reveal mn-d1">Rata-rata hasil pengguna AUTOMATA dalam 30 hari pertama.</p>
+      <div class="mn-cases-grid">
+        <div class="mn-case-card mn-reveal"><div class="mn-case-number">87%</div><div class="mn-case-label">Lebih hemat waktu urus konten</div></div>
+        <div class="mn-case-card mn-reveal mn-d1"><div class="mn-case-number">3.2×</div><div class="mn-case-label">ROAS iklan Meta naik</div></div>
+        <div class="mn-case-card mn-reveal mn-d2"><div class="mn-case-number">95%</div><div class="mn-case-label">Chat pelanggan kejawab otomatis</div></div>
+        <div class="mn-case-card mn-reveal mn-d3"><div class="mn-case-number">10×</div><div class="mn-case-label">Lebih cepat baca tren pasar</div></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="marquee-wrap">
-  <div class="marquee">
-    <div class="marquee-item"><span class="num">2.847+</span><span class="lbl">Pengguna Aktif</span></div>
-    <div class="marquee-item"><span class="num">15K+</span><span class="lbl">Thread Auto-Post</span></div>
-    <div class="marquee-item"><span class="num">98.5%</span><span class="lbl">Uptime</span></div>
-    <div class="marquee-item"><span class="num">4.9</span><span class="lbl">Rating</span></div>
-    <div class="marquee-item"><span class="num">6</span><span class="lbl">Platform</span></div>
-    <div class="marquee-item"><span class="num">Rp 99rb</span><span class="lbl">Mulai</span></div>
-    <div class="marquee-item"><span class="num">2.847+</span><span class="lbl">Pengguna Aktif</span></div>
-    <div class="marquee-item"><span class="num">15K+</span><span class="lbl">Thread Auto-Post</span></div>
-    <div class="marquee-item"><span class="num">98.5%</span><span class="lbl">Uptime</span></div>
-    <div class="marquee-item"><span class="num">4.9</span><span class="lbl">Rating</span></div>
-    <div class="marquee-item"><span class="num">6</span><span class="lbl">Platform</span></div>
-    <div class="marquee-item"><span class="num">Rp 99rb</span><span class="lbl">Mulai</span></div>
-  </div>
-</div>
-
-<section class="section-pad bg-ink">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Masalah</div>
-    <h2 class="section-title">Apakah ini <span class="grad-text">kamu</span>?</h2>
-    <p class="section-sub" style="margin:0 auto 16px">Kalau salah satu dari ini cocok, berarti lo lagi terjebak di cara lama.</p>
-  </div>
-  <div class="container">
-    <div class="pain-grid">
-      <div class="pain-card"><div class="pain-icon">&#x1f629;</div><h3>Kehabisan Ide Konten</h3><p>Bingung mau posting apa tiap hari, akhirnya akun jadi sepi dan engagement turun drastis.</p></div>
-      <div class="pain-card"><div class="pain-icon">&#x23f0;</div><h3>Gak Punya Waktu</h3><p>Sibuk kerja, urusan Threads jadi terbengkalai berminggu-minggu. Konsistensi? No way.</p></div>
-      <div class="pain-card"><div class="pain-icon">&#x1f4c9;</div><h3>Engagement Nge-drop</h3><p>Udah posting tapi sepi respons. Gak tahu cara bikin thread yang engaging &amp; viral.</p></div>
-      <div class="pain-card"><div class="pain-icon">&#x1f501;</div><h3>Manual &amp; Capek</h3><p>Bikin 1 thread aja makan waktu 30 menit. Bayangkan kalo harus 6 thread sehari.</p></div>
+  <!-- HOW IT WORKS -->
+  <section class="mn-section">
+    <div class="container">
+      <h2 class="mn-section-title mn-reveal">Gimana <span class="purple">Cara Kerjanya</span>?</h2>
+      <p class="mn-section-sub mn-reveal mn-d1">3 langkah doang. Serius.</p>
+      <ul class="mn-narasi-list">
+        <li class="mn-reveal"><div class="mn-narasi-num">1</div><div class="mn-narasi-content"><h5>Pilih Agent yang Lo Butuh</h5><p>Autopost konten? CS otomatis? Iklan Meta? Saham? Trend analyzer? Atau semua? Tinggal aktifin.</p></div></li>
+        <li class="mn-reveal mn-d1"><div class="mn-narasi-num">2</div><div class="mn-narasi-content"><h5>Set Sekali, Jalan Selamanya</h5><p>Setup awal cuma 10 menit. Setelah itu AI-nya kerja sendiri 24/7. Lo tidur pun tetep jalan.</p></div></li>
+        <li class="mn-reveal mn-d2"><div class="mn-narasi-num">3</div><div class="mn-narasi-content"><h5>Pantau dari Dashboard / WA</h5><p>Laporan harian dikirim ke WhatsApp lo. Tinggal baca 2 menit — tau semuanya.</p></div></li>
+      </ul>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="fitur" class="section-pad-lg">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Fitur</div>
-    <h2 class="section-title">Semua yang lo butuhin <br><span class="grad-text">dalam 1 tools</span></h2>
-    <p class="section-sub" style="margin:0 auto">Auto-pilot Threads 24/7 &#x2014; lo tinggal pantau, sisanya biar AI kerja.</p>
-  </div>
-  <div class="container">
-    <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">&#x1f916;</div><h3>AI Content Generator</h3><p>AI bikin thread fresh tiap hari dengan struktur teruji: Hook &#x2192; Agitasi &#x2192; Solusi &#x2192; CTA. Gak perlu mikir konten lagi.</p><div class="feature-tags"><span>Auto-generate</span><span>Bahasa Indo</span><span>6-8 thread/hari</span></div></div>
-      <div class="feature-card"><div class="feature-icon">&#x1f4c5;</div><h3>Auto Schedule &amp; Posting</h3><p>Tinggal setel jam tayang, sistem otomatis posting di jam prime time. Pagi, siang, sore, malam &#x2014; konsisten tiap hari.</p><div class="feature-tags"><span>Multi-jadwal</span><span>Queue system</span><span>Auto-publish</span></div></div>
-      <div class="feature-card"><div class="feature-icon">&#x1f504;</div><h3>Thread Berseri Multisegmen</h3><p>Setiap thread bisa 3-4 segmen (replies) otomatis &#x2014; hook, cerita, solusi, CTA dalam 1 thread utuh.</p><div class="feature-tags"><span>3-4 replies</span><span>Storytelling</span><span>Auto-thread</span></div></div>
-      <div class="feature-card"><div class="feature-icon">&#x1f4ca;</div><h3>Monitoring Real-time</h3><p>Report otomatis tiap 4 jam + harian via Telegram. Tau mana thread yang perform, mana yang kurang. Data-driven.</p><div class="feature-tags"><span>Telegram report</span><span>Engagement stats</span><span>Error alert</span></div></div>
-      <div class="feature-card"><div class="feature-icon">&#x1f4ac;</div><h3>Auto Reply Komentar</h3><p>Balas komentar otomatis pake AI. Followers merasa diperhatikan, engagement naik, lo gak perlu pegang HP tiap detik.</p><div class="feature-tags"><span>AI reply</span><span>24/7 aktif</span><span>Engagement booster</span></div></div>
-      <div class="feature-card"><div class="feature-icon">&#x1f310;</div><h3>Multi-Platform Siap</h3><p>Satu sistem buat 6 platform sekaligus: Threads, IG, FB, TikTok, LinkedIn, YouTube. Scale kapan aja.</p><div class="feature-tags"><span>6 platform</span><span>OAuth connect</span><span>Unlimited akun</span></div></div>
+  <!-- DEMO CHAT -->
+  <section class="mn-section">
+    <div class="container">
+      <h2 class="mn-section-title mn-reveal">Kayak Punya <span class="purple">Tim Marketing</span> Pribadi</h2>
+      <p class="mn-section-sub mn-reveal mn-d1">Tapi yang kerja AI — bukan orang. Dan dia gak pernah tidur.</p>
+      <div class="mn-demo-box mn-reveal mn-d2">
+        <div class="mn-chat user"><div class="lbl">🧑 Lo</div>Posting konten tentang produk baru ke semua sosmed jam 9 pagi, caption bahasa santai.</div>
+        <div class="mn-chat ai"><div class="lbl">🤖 AUTOMATA</div>✅ Done! Konten udah di-post ke Instagram, Threads, TikTok, Facebook, LinkedIn, dan YouTube Shorts. Caption disesuaikan per platform.</div>
+        <div class="mn-chat user"><div class="lbl">🧑 Lo</div>Kalau ada yang chat nanya harga, bales otomatis ya. Tapi kalau komplen, forward ke gue.</div>
+        <div class="mn-chat ai"><div class="lbl">🤖 AUTOMATA</div>✅ CS Agent aktif. Tanya harga → auto-reply dari katalog. Komplen → langsung eskalasi ke WA lo. 24/7.</div>
+        <div class="mn-chat user"><div class="lbl">🧑 Lo</div>Budget iklan hari ini naikin 30% buat yang performa bagus.</div>
+        <div class="mn-chat ai"><div class="lbl">🤖 AUTOMATA</div>✅ Budget shifted. Ad set "Lookalike-Jakarta" naik 30% — ROAS kemarin 4.2×. Yang boncos udah dipause otomatis.</div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="cara-kerja" class="section-pad bg-ink">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Cara Kerja</div>
-    <h2 class="section-title">Mulai dalam <span class="grad-text">3 langkah</span> mudah</h2>
-    <p class="section-sub" style="margin:0 auto">Dari daftar sampai posting otomatis &#x2014; gak sampai 5 menit.</p>
-  </div>
-  <div class="container">
-    <div class="steps">
-      <div class="step-card"><div class="step-num">1</div><h3>Daftar &amp; Pilih Paket</h3><p>Register &#x2014; isi data &#x2014; pilih paket sesuai kebutuhan. Trial 7 hari, tanpa kartu kredit. Langsung aktif.</p></div>
-      <div class="step-card"><div class="step-num">2</div><h3>Connect Akun Threads</h3><p>Login via OAuth &#x2014; sekali klik langsung konek. Atur niche &amp; jam tayang sesuai preferensi lo.</p></div>
-      <div class="step-card"><div class="step-num">3</div><h3>Auto-Post Jalan Terus</h3><p>AI generate + schedule 6-8 thread per hari otomatis. Lo tinggal pantau report via Telegram. Santai.</p></div>
+  <!-- FEATURES -->
+  <section class="mn-section" id="fitur">
+    <div class="container">
+      <h2 class="mn-section-title mn-reveal">Kenalin <span class="purple">5 AI Agent</span> Lo</h2>
+      <p class="mn-section-sub mn-reveal mn-d1">Masing-masing punya spesialisasi. Tapi semua kerja bareng di satu dashboard.</p>
+      <div class="mn-feature-grid">
+        <div class="mn-feature-card mn-reveal"><div class="icon" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2)">📱</div><h3>AI Agent Autopost</h3><p>Bikin 1 konten, posting di 6 platform otomatis. Content bank, auto remix caption, jadwal mingguan. Bahkan pas lo tidur tetep jalan.</p></div>
+        <div class="mn-feature-card mn-reveal mn-d1"><div class="icon" style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2)">💬</div><h3>AI Agent Customer Service</h3><p>Auto-reply WA, Telegram, website chat 24/7. Tau kapan harus eskalasi ke lo. Pelanggan gak pernah nunggu lama lagi.</p></div>
+        <div class="mn-feature-card mn-reveal mn-d2"><div class="icon" style="background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.2)">📢</div><h3>AI Agent Meta Ads</h3><p>Auto campaign, smart audience, budget shifter real-time. Laporan harian dikirim ke WA. Lo gak perlu buka Ads Manager.</p></div>
+        <div class="mn-feature-card mn-reveal mn-d3"><div class="icon" style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2)">📈</div><h3>AI Agent IHSG</h3><p>Screening 900+ saham tiap hari. Bandarmologi scanner, trading plan generator — entry/SL/TP pasti, bukan tebakan.</p></div>
+        <div class="mn-feature-card mn-reveal mn-d4"><div class="icon" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2)">🔍</div><h3>AI Agent Trend Analyzer</h3><p>Scan Google Trends, TikTok, Twitter, Reddit — tau tren yang naik duluan. Auto-marketing playbook siap eksekusi.</p></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section-pad">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Perbandingan</div>
-    <h2 class="section-title">BudakThreads vs <span class="grad-text">Tools Lain</span></h2>
-  </div>
-  <div class="container">
-    <div class="compare-wrap">
-      <table class="compare-table">
-        <thead><tr><th>Fitur</th><th style="text-align:center;width:130px">BudakThreads</th><th style="text-align:center;width:90px">Hootsuite</th><th style="text-align:center;width:80px">Buffer</th><th style="text-align:center;width:90px">Postoplan</th></tr></thead>
+  <!-- TESTIMONIALS -->
+  <section class="mn-section">
+    <div class="container">
+      <h2 class="mn-section-title mn-reveal">Kata <span class="orange">Mereka</span></h2>
+      <p class="mn-section-sub mn-reveal mn-d1">200+ pebisnis udah pake. Ini cerita mereka.</p>
+      <div style="display:grid;gap:16px">
+        <div class="mn-testi-card mn-reveal"><div class="mn-testi-stars">★★★★★</div><div class="mn-testi-text">"Dulu bangun pagi cuma buat posting & bales chat. Sekarang AUTOMATA handle semua. Konten jalan tiap jam, pelanggan puas, gue tinggal develop produk."</div><div class="mn-testi-author"><div class="mn-testi-avatar" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff">AR</div><div><div class="mn-testi-name">Ahmad Rizky</div><div class="mn-testi-role">Owner — Rizky Digital</div></div></div></div>
+        <div class="mn-testi-card mn-reveal mn-d1"><div class="mn-testi-stars">★★★★★</div><div class="mn-testi-text">"Meta Ads Agent juara. Budget iklan turun 40% tapi order naik 2× lipat. Yang paling gue suka — laporan pagi lewat WA."</div><div class="mn-testi-author"><div class="mn-testi-avatar" style="background:linear-gradient(135deg,#f97316,#fb923c);color:#fff">DS</div><div><div class="mn-testi-name">Dewi Sari</div><div class="mn-testi-role">Founder — Skincare Local</div></div></div></div>
+        <div class="mn-testi-card mn-reveal mn-d2"><div class="mn-testi-stars">★★★★★</div><div class="mn-testi-text">"IHSG Agent & Trend Analyzer jadi senjata rahasia gue. Tau tren duluan, entry lebih presisi. Portfolio naik 28% dalam sebulan pertama."</div><div class="mn-testi-author"><div class="mn-testi-avatar" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff">BH</div><div><div class="mn-testi-name">Budi Hartono</div><div class="mn-testi-role">Trader & Pebisnis</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="mn-section">
+    <div class="container">
+      <h2 class="mn-section-title mn-reveal">AUTOMATA <span class="purple">vs</span> Cara Lama</h2>
+      <p class="mn-section-sub mn-reveal mn-d1">Bandingin sendiri.</p>
+      <table class="mn-compare-table mn-reveal mn-d2">
+        <thead><tr><th></th><th>Manual / Hire Orang</th><th>AUTOMATA</th></tr></thead>
         <tbody>
-          <tr class="highlight"><td>AI Content Generator</td><td style="text-align:center;color:var(--gold);font-weight:700">&#x2713; Native</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td></tr>
-          <tr><td>Thread Berseri Multi-segmen</td><td style="text-align:center;color:var(--gold);font-weight:700">&#x2713; Native</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td></tr>
-          <tr class="highlight"><td>Bahasa Indonesia Natural</td><td style="text-align:center;color:var(--gold);font-weight:700">&#x2713; Banget</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td></tr>
-          <tr><td>Auto-reply Komentar</td><td style="text-align:center;color:var(--gold);font-weight:700">&#x2713;</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td></tr>
-          <tr class="highlight"><td>Multi-Platform</td><td style="text-align:center;color:var(--gold);font-weight:700">&#x2713; 6 Platform</td><td style="text-align:center" class="yes">&#x2713;</td><td style="text-align:center" class="yes">&#x2713;</td><td style="text-align:center" class="yes">&#x2713;</td></tr>
-          <tr><td>Report Telegram Real-time</td><td style="text-align:center;color:var(--gold);font-weight:700">&#x2713;</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td><td style="text-align:center" class="no">&#x2715;</td></tr>
-          <tr class="highlight"><td>Harga Mulai</td><td style="text-align:center;color:var(--gold);font-weight:700">Rp 99rb/bln</td><td style="text-align:center" class="no">$99+/bln</td><td style="text-align:center" class="no">$6+/bln</td><td style="text-align:center" class="no">$7.5+/bln</td></tr>
+          <tr><td>Posting konten tiap hari</td><td class="cross">✗ 1-2 jam/hari</td><td class="check">✓ Otomatis</td></tr>
+          <tr><td>Bales chat pelanggan</td><td class="cross">✗ Respon lambat</td><td class="check">✓ Instan 24/7</td></tr>
+          <tr><td>Kelola iklan Meta</td><td class="cross">✗ Mahal & ribet</td><td class="check">✓ Auto-pilot</td></tr>
+          <tr><td>Riset tren pasar</td><td class="cross">✗ 3-5 jam/hari</td><td class="check">✓ 5 menit</td></tr>
+          <tr><td>Monitoring saham</td><td class="cross">✗ Mantengin layar</td><td class="check">✓ Alert otomatis</td></tr>
+          <tr><td>Biaya per bulan</td><td class="cross">Rp 5-15jt</td><td class="check">Rp 199rb sekali bayar</td></tr>
         </tbody>
       </table>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="testimoni" class="section-pad bg-ink">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Testimoni</div>
-    <h2 class="section-title">Kata mereka yang <br><span class="grad-text">udah coba</span></h2>
-  </div>
-  <div class="container">
-    <div class="testi-grid">
-      <div class="testi-card"><div class="quote">"</div><div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><p class="testi-text">"Gue freelancer desainer, gak pernah punya waktu buat posting. Sekarang akun Threads gue aktif tiap hari tanpa gue sentuh. Engagement naik 3x lipat!"</p><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Ahmad Rizky</div><div class="testi-role">Freelance Designer</div></div></div></div>
-      <div class="testi-card"><div class="quote">"</div><div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><p class="testi-text">"Fitur auto-reply itu game changer! Komentar masuk langsung dibales, followers makin engage. Udah 2 bulan, puas banget."</p><div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">Dian Purnama</div><div class="testi-role">Content Creator</div></div></div></div>
-      <div class="testi-card"><div class="quote">"</div><div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><p class="testi-text">"Awalnya ragu, tapi trial 7 hari cukup buat ngebuktiin. Report Telegram-nya mantap &#x2014; tau persis mana konten yang lagi viral. Recommended!"</p><div class="testi-author"><div class="testi-avatar">B</div><div><div class="testi-name">Budi Santoso</div><div class="testi-role">UMKM Owner</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-pad">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Bonus</div>
-    <h2 class="section-title">Bonus yang bakal lo <span class="grad-text">dapetin</span></h2>
-  </div>
-  <div class="container">
-    <div class="bonus-grid">
-      <div class="bonus-card"><div class="bonus-badge">GRATIS</div><div class="bonus-icon">&#x1f4d8;</div><h3>PDF Guide: Threads Strategy</h3><p>Panduan lengkap strategi konten Threads &#x2014; dari hook sampe CTA yang bikin orang klik.</p><div class="bonus-value">Rp 150K</div></div>
-      <div class="bonus-card"><div class="bonus-badge">GRATIS</div><div class="bonus-icon">&#x1f3a8;</div><h3>Template Pack Threads</h3><p>100+ template thread siap pakai buat berbagai niche &#x2014; tinggal isi, beres.</p><div class="bonus-value">Rp 200K</div></div>
-      <div class="bonus-card"><div class="bonus-badge">GRATIS</div><div class="bonus-icon">&#x1f465;</div><h3>Group Eksklusif</h3><p>Akses komunitas pengguna BudakThreads. Sharing strategy, tips, &amp; networking.</p><div class="bonus-value">Rp 250K</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="harga" class="section-pad-lg bg-ink">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Harga</div>
-    <h2 class="section-title">Jangan sampai <span class="grad-text">kehabisan slot</span></h2>
-    <p class="section-sub" style="margin:0 auto">Promo terbatas untuk 50 early bird pertama. Harga naik minggu depan!</p>
-  </div>
-  <div class="container">
-    <div class="pricing-card-single">
-      <div class="scarcity-bar"><div class="scarcity-fill" style="width:78%"></div></div>
-      <div class="scarcity-text">&#x1f525; 39 dari 50 slot early bird udah terisi!</div>
-      <div class="countdown-wrap">
-        <div class="countdown-item"><div class="countdown-num" id="hours">12</div><div class="countdown-lbl">Jam</div></div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-item"><div class="countdown-num" id="minutes">34</div><div class="countdown-lbl">Menit</div></div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-item"><div class="countdown-num" id="seconds">56</div><div class="countdown-lbl">Detik</div></div>
+  <!-- PRICING -->
+  <section class="mn-section" id="harga">
+    <div class="container">
+      <h2 class="mn-section-title mn-reveal">Sekali Bayar, <span class="orange">Pake Selamanya</span></h2>
+      <p class="mn-section-sub mn-reveal mn-d1">Gak ada langganan bulanan. Gak ada biaya tersembunyi.</p>
+      <div class="mn-pricing-card mn-reveal mn-d2">
+        <div class="mn-pricing-badge">🔥 Promo Hari Ini</div>
+        <p class="mn-pricing-strike">Rp 2.500.000</p>
+        <p style="color:#777;font-size:0.85rem;text-decoration:line-through;margin-bottom:4px">Rp 500.000</p>
+        <p class="mn-pricing-price">Rp 199rb</p>
+        <p class="mn-pricing-period">Sekali bayar · Lifetime access · Semua 5 agent</p>
+        <ul class="mn-pricing-features">
+          <li><span>✓</span> Semua 5 AI Agent aktif</li>
+          <li><span>✓</span> Unlimited task/hari</li>
+          <li><span>✓</span> Multi-platform (IG, Threads, TikTok, dll)</li>
+          <li><span>✓</span> Laporan harian ke WhatsApp</li>
+          <li><span>✓</span> Update fitur gratis selamanya</li>
+          <li><span>✓</span> Prioritas support respon cepat</li>
+          <li><span>✓</span> Export data & PDF</li>
+          <li><span>✓</span> 7 hari garansi uang kembali</li>
+        </ul>
+        <a href="#cta" class="btn-primary" style="width:100%;justify-content:center;font-size:1.05rem;padding:16px">🔥 Ambil Promo Rp 199.000</a>
+        <p style="text-align:center;font-size:0.75rem;color:#666;margin-top:12px">⏳ Promo hari ini aja — besok balik ke Rp 500rb</p>
       </div>
-      <div class="price-old">Rp 997.000</div>
-      <div class="price-current">Rp 99.000 <span>/bulan</span></div>
-      <div class="price-period">Harga promo &#x2022; naik jadi Rp 299rb setelah 50 slot</div>
-      <ul class="pricing-features">
-        <li>AI Content Generator &#x2014; thread fresh tiap hari</li>
-        <li>Auto Schedule &amp; Posting &#x2014; 6-8 thread/hari</li>
-        <li>Thread Berseri Multisegmen (3-4 replies)</li>
-        <li>Monitoring Report via Telegram (tiap 4 jam)</li>
-        <li>Auto Reply Komentar</li>
-        <li>Multi-Platform Ready (6 platform)</li>
-        <li>Support Bahasa Indonesia Natural</li>
-        <li class="no">Manual posting &#x2014; semuanya otomatis</li>
-        <li class="no">Gak perlu pegang HP tiap hari</li>
-      </ul>
-      <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;font-size:16px;padding:16px 28px">Ambil Akses Sekarang</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="guarantee-wrap">
-  <div class="guarantee-icon">&#x1f6e1;&#xfe0f;</div>
-  <h2>Garansi <span class="grad-text">7 Hari</span> Uang Kembali</h2>
-  <p>Coba dulu 7 hari penuh. Kalau gak cocok &#x2014; gue refund full, tanpa tanya apa-apa. Gak ada resiko buat lo.</p>
-</section>
-
-<section id="faq" class="section-pad">
-  <div class="container" style="text-align:center">
-    <div class="section-label">FAQ</div>
-    <h2 class="section-title">Pertanyaan yang <span class="grad-text">sering ditanyain</span></h2>
-  </div>
-  <div class="container">
-    <div class="faq-list">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Apa itu BudakThreads? <span class="arrow">+</span></button><div class="faq-a"><p>BudakThreads adalah sistem auto-posting Threads berbasis AI. Lo tinggal daftar, connect akun, dan sistem akan generate &amp; schedule konten fresh tiap hari secara otomatis. Report real-time via Telegram.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Berapa biayanya? <span class="arrow">+</span></button><div class="faq-a"><p>Mulai dari Rp 99.000/bulan untuk paket Starter. Ada juga paket Pro (Rp 299rb) dan Agency (Rp 999rb). Semua ada trial 7 hari, full refund kalau gak cocok.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Apakah perlu bisa coding? <span class="arrow">+</span></button><div class="faq-a"><p>Gak perlu sama sekali. Connect akun via OAuth tinggal klik, sisanya otomatis. Cocok banget buat lo yang non-teknis.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Threadsnya bakal keliatan spam? <span class="arrow">+</span></button><div class="faq-a"><p>Enggak. Konten di-generate dengan struktur natural: hook relatable &#x2192; cerita &#x2192; solusi &#x2192; CTA. Bahasanya Indonesia gaul, bukan kayak bot. Setiap thread unique.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Bisa buat akun yang udah ada? <span class="arrow">+</span></button><div class="faq-a"><p>Bisa banget. Tinggal connect akun Threads lo via OAuth, sistem langsung jalan. Akun lama atau baru, sama aja.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Gimana cara refund? <span class="arrow">+</span></button><div class="faq-a"><p>Dalam 7 hari setelah daftar, lo bisa minta refund kapan aja. Full 100% tanpa potongan. Produk ini works, jadi gak perlu ribet.</p></div></div>
+  <!-- FAQ -->
+  <section class="mn-section" id="faq">
+    <div class="container">
+      <h2 class="mn-section-title mn-reveal">FAQ</h2>
+      <div class="mn-faq-item active"><button class="mn-faq-btn" onclick="toggleFaq(this)"><span>Gak paham teknologi — bisa pake?</span><span class="mn-faq-icon">+</span></button><div class="mn-faq-answer">Gampang banget. Interface-nya sederhana kayak chat WA. Setup awal cuma 10 menit, setelah itu jalan otomatis.</div></div>
+      <div class="mn-faq-item"><button class="mn-faq-btn" onclick="toggleFaq(this)"><span>Bisa pake semua agent barengan?</span><span class="mn-faq-icon">+</span></button><div class="mn-faq-answer">Ya! Semua 5 agent aktif barengan dan saling terintegrasi. Trend Analyzer ngasih tau topik viral → Autopost langsung bikin konten → Meta Ads promosiin → CS Agent bales chat calon buyer.</div></div>
+      <div class="mn-faq-item"><button class="mn-faq-btn" onclick="toggleFaq(this)"><span>Data aman gak?</span><span class="mn-faq-icon">+</span></button><div class="mn-faq-answer">Semua data dienkripsi. Gak ada yang dijual ke pihak ketiga. Lo bisa minta hapus data kapan aja.</div></div>
+      <div class="mn-faq-item"><button class="mn-faq-btn" onclick="toggleFaq(this)"><span>Kenapa cuma Rp 199rb? Ini beneran?</span><span class="mn-faq-icon">+</span></button><div class="mn-faq-answer">Ini harga promo early bird. Setelah cukup banyak pengguna, harga bakal naik ke Rp 500rb. Yang sekarang beli, dapet harga ini selamanya.</div></div>
+      <div class="mn-faq-item"><button class="mn-faq-btn" onclick="toggleFaq(this)"><span>Kalau gak puas?</span><span class="mn-faq-icon">+</span></button><div class="mn-faq-answer">7 hari garansi uang kembali 100%. Tanpa nanya-nanya. Lo gak ada resiko apa-apa.</div></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="final-cta">
-  <h2>Saatnya ambil <span class="grad-text">keputusan</span></h2>
-  <p>Udah saatnya lo kerja cerdas, bukan kerja keras. Biarkan AI urusan Threads, lo fokus ke bisnis lo.</p>
-  <a href="#harga" class="btn btn-primary btn-lg">Ambil Akses Mulai Rp 99rb</a>
-</section>
+  <!-- FINAL CTA -->
+  <section class="mn-final-cta" id="cta">
+    <h2 class="mn-reveal">Sementara Kompetitor<br>Masih <span class="purple">Manual</span>...</h2>
+    <p class="mn-reveal mn-d1">Lo udah punya 5 AI Agent yang kerja 24/7. Sekali bayar Rp 199rb — pake selamanya.</p>
+    <a href="#harga" class="btn-primary mn-reveal mn-d2" style="font-size:1.1rem;padding:18px 40px">🔥 Ambil Sekarang — Rp 199rb</a>
+    <p style="font-size:0.75rem;color:#555;margin-top:16px" class="mn-reveal mn-d3">7 hari garansi uang kembali · Tanpa resiko</p>
+  </section>
 
-<footer>
-  <div style="max-width:1100px;margin:0 auto">
-    <a href="#" class="nav-logo" style="justify-content:center;margin-bottom:12px">&#x1f916; Budak<span>Threads</span></a>
-    <p style="margin-bottom:8px">Auto-Posting Threads Harian. Cuan &amp; Branding Otomatis.</p>
-    <p>&#xa9; 2026 BudakThreads. All rights reserved.</p>
-  </div>
-</footer>
+  <!-- FOOTER -->
+  <footer class="mn-footer">
+    <div style="font-weight:800;font-size:1rem;color:#888;margin-bottom:8px">🤖 AUTOMATA</div>
+    <p>© 2026 AUTOMATA — AI Agent Suite. All rights reserved.</p>
+    <p style="margin-top:4px">Dibuat dengan 💜 buat pebisnis Indonesia</p>
+  </footer>
 
-<script>
-function toggleFaq(btn) {
-  btn.classList.toggle('active');
-  btn.nextElementSibling.classList.toggle('open');
-}
-function updateCountdown() {
-  var end = new Date(); end.setHours(23,59,59,0);
-  var diff = end - new Date(); if(diff <= 0) return;
-  document.getElementById('hours').textContent = String(Math.floor(diff/3600000)).padStart(2,'0');
-  document.getElementById('minutes').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('seconds').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-}
-updateCountdown(); setInterval(updateCountdown, 1000);
-document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-  a.addEventListener('click', function(e) {
-    var id = a.getAttribute('href'); if(id === '#') return; e.preventDefault();
-    var el = document.querySelector(id); if(el) el.scrollIntoView({behavior:'smooth'});
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
-</script>
-
+  <script>
+    function toggleFaq(btn){const item=btn.closest('.mn-faq-item');const isActive=item.classList.contains('active');document.querySelectorAll('.mn-faq-item').forEach(el=>el.classList.remove('active'));if(!isActive)item.classList.add('active')}
+    document.querySelector('.mn-faq-item')?.classList.add('active');
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
+    document.querySelectorAll('.mn-reveal').forEach(el=>obs.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+  </script>
 </body>
 </html>
