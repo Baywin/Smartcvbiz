@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AUTOMATA — AI yang Kerja, Lo yang Cuan</title>
+  <title>Karyawan Digital — 1 Orang, 5 Posisi. Gaji Sekali.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -18,13 +18,11 @@
       --red-light:#ef4444;
       --red-bright:#f87171;
       --red-dark:#b91c1c;
-      --red-glow:rgba(220,38,38,0.15);
       --gold:#e6a838;
       --gold-light:#f5d280;
       --gold-bright:#ffe08a;
       --gold-dark:#c9922e;
       --border-gold:rgba(230,168,56,0.18);
-      --border-red:rgba(220,38,38,0.18);
       --text-main:#e8e8e8;
       --text-sub:#999;
       --text-muted:#666;
@@ -36,17 +34,6 @@
     .rv.v{opacity:1;transform:translateY(0)}
     .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
-    /* Premium Card — gold outline + red glow on hover */
-    .prem-card{
-      background:linear-gradient(180deg,rgba(230,168,56,0.03) 0%,rgba(255,255,255,0.01) 100%);
-      border:1px solid var(--border-gold);
-      border-radius:20px;transition:all 0.4s;position:relative;overflow:hidden;
-    }
-    .prem-card:hover{
-      border-color:rgba(230,168,56,0.35);
-      box-shadow:0 0 30px rgba(220,38,38,0.08),0 0 40px rgba(230,168,56,0.06);
-    }
-
     .sec{padding:70px 0;position:relative}
     .sec-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;text-align:center;margin-bottom:10px;line-height:1.15;letter-spacing:-0.02em}
     .sec-sub{text-align:center;font-size:0.95rem;color:var(--text-sub);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
@@ -54,7 +41,6 @@
     .red-text{color:var(--red-light)}
     .divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 20px;border-radius:2px}
 
-    /* Buttons */
     .btn-main{
       display:inline-flex;align-items:center;gap:8px;
       background:linear-gradient(135deg,var(--red-dark),var(--red));
@@ -92,78 +78,56 @@
     .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pd 2s infinite}
     @keyframes pd{0%,100%{opacity:0.4;transform:scale(0.8)}50%{opacity:1;transform:scale(1.3)}}
 
-    .hero h1{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:18px;max-width:620px;background:linear-gradient(135deg,#fff 0%,#f5d280 30%,var(--red-light) 60%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shm 4s linear infinite}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.9rem;font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:18px;max-width:620px;background:linear-gradient(135deg,#fff 0%,#f5d280 30%,var(--red-light) 60%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shm 4s linear infinite}
     @keyframes shm{0%{background-position:0% center}100%{background-position:200% center}}
+    .hero h1 .small{display:block;font-size:1.2rem;font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:0;margin-top:10px;background:linear-gradient(135deg,#fff,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-    .hero-sub{font-size:1.05rem;color:var(--text-sub);max-width:480px;line-height:1.7;margin-bottom:40px}
+    .hero-sub{font-size:1.05rem;color:var(--text-sub);max-width:500px;line-height:1.7;margin-bottom:40px}
     .hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:48px}
-    .hero-social{display:flex;align-items:center;gap:16px;font-size:0.85rem;color:var(--text-muted)}
-    .hero-social .av span{width:34px;height:34px;border-radius:50%;border:2px solid #0a0608;display:inline-flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;margin-left:-10px;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
-    .hero-social .av span:first-child{margin-left:0}
-    .hero-social strong{color:var(--gold-light)}
+
+    /* ====== PROBLEM ====== */
+    .prob-list{list-style:none;display:grid;gap:16px}
+    .prob-list li{display:flex;align-items:flex-start;gap:14px;padding:18px;border-radius:16px;background:rgba(220,38,38,0.03);border:1px solid rgba(220,38,38,0.08);transition:all 0.3s}
+    .prob-list li:hover{border-color:rgba(220,38,38,0.2);background:rgba(220,38,38,0.06)}
+    .prob-list .icon{font-size:1.2rem;flex-shrink:0;margin-top:1px}
+    .prob-list h4{font-size:0.95rem;font-weight:700;margin-bottom:2px}
+    .prob-list p{font-size:0.82rem;color:var(--text-sub);line-height:1.5}
 
     /* ====== MARQUEE ====== */
     .marquee{overflow:hidden;padding:24px 0;border-top:1px solid rgba(230,168,56,0.08);border-bottom:1px solid rgba(230,168,56,0.08);background:linear-gradient(180deg,rgba(220,38,38,0.02) 0%,transparent 100%);white-space:nowrap}
     .marquee-inner{display:inline-flex;animation:mq 30s linear infinite}
-    .marquee-inner span{font-size:1.1rem;font-weight:800;padding:0 40px;text-transform:uppercase;letter-spacing:0.08em}
+    .marquee-inner span{font-size:1rem;font-weight:700;padding:0 36px;text-transform:uppercase;letter-spacing:0.06em}
     .marquee-inner span.gold-grad{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .marquee-inner span.red-grad{background:linear-gradient(135deg,var(--red),var(--red-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .marquee-inner span.sep{color:rgba(230,168,56,0.25);-webkit-text-fill-color:rgba(230,168,56,0.25);font-size:0.8rem}
+    .marquee-inner span.sep{-webkit-text-fill-color:rgba(230,168,56,0.25);font-size:0.7rem}
     @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    /* ====== CASES ====== */
-    .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .case-card{background:linear-gradient(180deg,rgba(230,168,56,0.04) 0%,rgba(255,255,255,0.01) 100%);border:1px solid var(--border-gold);border-radius:20px;padding:28px 20px;text-align:center;transition:all 0.4s;position:relative;overflow:hidden}
-    .case-card::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(220,38,38,0.04) 0%,transparent 60%);opacity:0;transition:opacity 0.4s;pointer-events:none}
-    .case-card:hover{border-color:rgba(230,168,56,0.4);box-shadow:0 0 30px rgba(220,38,38,0.06),0 0 20px rgba(230,168,56,0.05)}
-    .case-card:hover::after{opacity:1}
-    .case-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;background:linear-gradient(135deg,var(--red-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .case-label{font-size:0.8rem;color:var(--text-sub);margin-top:6px;line-height:1.4}
+    /* ====== SOLUTION ====== */
+    .sol-card{background:linear-gradient(180deg,rgba(230,168,56,0.04) 0%,rgba(255,255,255,0.01) 100%);border:1.5px solid var(--border-gold);border-radius:24px;padding:36px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(220,38,38,0.03),0 0 30px rgba(230,168,56,0.03)}
+    .sol-card .big-icon{font-size:3rem;margin-bottom:16px}
+    .sol-card h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;margin-bottom:14px}
+    .sol-card p{font-size:0.9rem;color:var(--text-sub);line-height:1.7;max-width:460px;margin:0 auto}
 
-    /* ====== STEPS ====== */
+    /* ====== 5 POSITIONS ====== */
+    .pos-grid{display:grid;gap:16px}
+    .pos-card{background:linear-gradient(180deg,rgba(230,168,56,0.04) 0%,rgba(255,255,255,0.01) 100%);border:1px solid var(--border-gold);border-radius:20px;padding:28px 24px;transition:all 0.4s;position:relative;overflow:hidden}
+    .pos-card:hover{border-color:rgba(230,168,56,0.4);box-shadow:0 0 30px rgba(220,38,38,0.05),0 0 25px rgba(230,168,56,0.05)}
+    .pos-card .pos-num{position:absolute;top:16px;right:20px;font-size:3rem;font-weight:900;color:rgba(220,38,38,0.06);line-height:1;font-family:'Playfair Display',serif;pointer-events:none}
+    .pos-card .icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;border:1px solid var(--border-gold);position:relative;z-index:1}
+    .pos-card .icon.rb{background:rgba(220,38,38,0.06);border-color:rgba(220,38,38,0.15)}
+    .pos-card .icon.gb{background:rgba(230,168,56,0.06);border-color:rgba(230,168,56,0.15)}
+    .pos-card h3{font-size:1rem;font-weight:700;margin-bottom:4px}
+    .pos-card .pos-title{font-size:0.82rem;color:var(--red-light);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em}
+    .pos-card p{font-size:0.85rem;color:var(--text-sub);line-height:1.6}
+    .pos-note{text-align:center;margin-top:18px;padding:16px;border-radius:14px;background:rgba(230,168,56,0.04);border:1px dashed rgba(230,168,56,0.15);font-size:0.85rem;color:var(--text-sub);line-height:1.6}
+
+    /* ====== HOW IT WORKS ====== */
     .step-list{list-style:none}
     .step-list li{display:flex;align-items:flex-start;gap:18px;padding:24px 0;border-bottom:1px solid rgba(230,168,56,0.06)}
     .step-list li:last-child{border-bottom:none}
     .step-num{width:42px;height:42px;border-radius:14px;background:rgba(220,38,38,0.08);border:1.5px solid rgba(220,38,38,0.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;color:var(--red-light);flex-shrink:0;box-shadow:0 0 15px rgba(220,38,38,0.05)}
     .step-content h5{font-size:0.95rem;font-weight:700;margin-bottom:6px}
     .step-content p{font-size:0.85rem;color:var(--text-sub);line-height:1.6}
-
-    /* ====== DEMO CHAT ====== */
-    .demo-box{background:linear-gradient(180deg,rgba(230,168,56,0.03) 0%,rgba(255,255,255,0.01) 100%);border:1.5px solid var(--border-gold);border-radius:24px;padding:28px;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(220,38,38,0.03),0 0 30px rgba(230,168,56,0.03)}
-    .demo-box::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(220,38,38,0.06),transparent);pointer-events:none}
-    .chat{border-radius:16px;padding:14px 18px;margin-bottom:12px;max-width:88%;font-size:0.88rem;line-height:1.55;border:1px solid rgba(255,255,255,0.04)}
-    .chat.ai{margin-right:auto;background:rgba(230,168,56,0.04);border-color:rgba(230,168,56,0.1)}
-    .chat.user{margin-left:auto;background:rgba(220,38,38,0.04);border-color:rgba(220,38,38,0.1)}
-    .chat .lbl{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
-    .chat.ai .lbl{color:var(--gold)}
-    .chat.user .lbl{color:var(--red-light)}
-
-    /* ====== FEATURES ====== */
-    .feat-grid{display:grid;gap:16px}
-    .feat-card{background:linear-gradient(180deg,rgba(230,168,56,0.04) 0%,rgba(255,255,255,0.01) 100%);border:1px solid var(--border-gold);border-radius:20px;padding:28px 24px;transition:all 0.4s;position:relative;overflow:hidden}
-    .feat-card:hover{border-color:rgba(230,168,56,0.4);box-shadow:0 0 30px rgba(220,38,38,0.05),0 0 25px rgba(230,168,56,0.05)}
-    .feat-card .icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px;border:1px solid var(--border-gold)}
-    .feat-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
-    .feat-card p{font-size:0.85rem;color:var(--text-sub);line-height:1.6}
-
-    /* ====== TESTIMONIALS ====== */
-    .testi-card{background:linear-gradient(180deg,rgba(230,168,56,0.03) 0%,rgba(255,255,255,0.01) 100%);border:1px solid var(--border-gold);border-radius:20px;padding:24px;transition:all 0.3s}
-    .testi-card:hover{border-color:rgba(230,168,56,0.3);box-shadow:0 0 25px rgba(220,38,38,0.04)}
-    .testi-stars{color:var(--gold);font-size:0.85rem;margin-bottom:12px;letter-spacing:2px}
-    .testi-text{font-size:0.9rem;color:#bbb;line-height:1.65;margin-bottom:16px;font-style:italic}
-    .testi-author{display:flex;align-items:center;gap:12px}
-    .testi-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;border:1.5px solid var(--border-gold)}
-    .testi-name{font-size:0.85rem;font-weight:600}
-    .testi-role{font-size:0.75rem;color:var(--text-muted)}
-
-    /* ====== COMPARE ====== */
-    .cmp-table{width:100%;border-collapse:collapse;font-size:0.85rem}
-    .cmp-table th{text-align:left;padding:16px;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-sub);border-bottom:1px solid var(--border-gold)}
-    .cmp-table th:last-child{text-align:center;color:var(--red-light)}
-    .cmp-table td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.03);color:#bbb}
-    .cmp-table td:last-child{text-align:center}
-    .cmp-table .ck{color:var(--red-light);font-weight:700;font-size:1rem}
-    .cmp-table .xx{color:#444}
 
     /* ====== PRICING ====== */
     .price-card{background:linear-gradient(180deg,rgba(220,38,38,0.06) 0%,rgba(230,168,56,0.03) 50%,rgba(255,255,255,0.01) 100%);border:1.5px solid rgba(230,168,56,0.25);border-radius:24px;padding:44px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(220,38,38,0.05),0 0 40px rgba(230,168,56,0.04)}
@@ -179,6 +143,7 @@
     .price-feats li span{font-weight:700;flex-shrink:0;font-size:1rem}
     .price-feats li span.g{color:var(--gold)}
     .price-feats li span.r{color:var(--red-light)}
+    .price-sub-text{text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:30px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6;padding:16px;border-radius:14px;background:rgba(230,168,56,0.03);border:1px dashed rgba(230,168,56,0.08)}
 
     /* ====== FAQ ====== */
     .faq-item{border-bottom:1px solid rgba(230,168,56,0.06);padding:18px 0}
@@ -187,7 +152,7 @@
     .faq-icon{transition:transform 0.3s;color:var(--red-light);font-size:1.2rem;flex-shrink:0}
     .faq-item.on .faq-icon{transform:rotate(45deg)}
     .faq-ans{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;color:var(--text-sub);font-size:0.9rem;line-height:1.65}
-    .faq-item.on .faq-ans{max-height:300px;padding-top:14px}
+    .faq-item.on .faq-ans{max-height:500px;padding-top:14px}
 
     /* ====== FINAL CTA ====== */
     .final-cta{text-align:center;padding:80px 20px;position:relative}
@@ -199,14 +164,13 @@
     .footer-brand{font-family:'Playfair Display',serif;font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--red-light),var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
 
     @media(max-width:640px){
-      .hero h1{font-size:2.1rem}.sec-title{font-size:1.45rem}.price-amount{font-size:3rem}.final-cta h2{font-size:1.6rem}
-      .cases-grid{gap:10px}.case-card{padding:20px 14px}.case-num{font-size:1.8rem}
+      .hero h1{font-size:2rem}.hero h1 .small{font-size:1rem}.sec-title{font-size:1.45rem}.price-amount{font-size:3rem}.final-cta h2{font-size:1.6rem}
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
+  <!-- ========== HERO ========== -->
   <section class="hero">
     <div class="hero-particles">
       <span style="left:10%;animation-delay:0s;animation-duration:7s"></span>
@@ -218,203 +182,186 @@
       <span style="left:35%;animation-delay:1s;animation-duration:9s"></span>
       <span style="left:55%;animation-delay:2.5s;animation-duration:6s"></span>
     </div>
-    <div class="hero-badge rv"><span class="dot"></span> 5 AI Agent — 1 Dashboard — Lifetime Access</div>
-    <h1 class="rv">AI yang Kerja,<br>Lo yang Cuan</h1>
-    <p class="hero-sub rv d1">5 AI Agent autopost, customer service, Meta Ads, IHSG, & trend analyzer — jalan 24/7 tanpa lo ngapa2in.</p>
+    <div class="hero-badge rv"><span class="dot"></span> Sekali Bayar · Pake Selamanya</div>
+    <h1 class="rv">
+      Gaji 1 Karyawan<br>Digital Marketing
+      <span class="small">Dia merangkap 5 posisi. Lo bayar sekali.</span>
+    </h1>
+    <p class="hero-sub rv d1">Bukan 5 tools terpisah. Tapi 1 AI agent yang kerja sebagai riset market, admin sosmed, desainer, copywriter, dan web developer — 24/7, tanpa minta lembur.</p>
     <div class="hero-cta rv d2">
-      <a href="#harga" class="btn-main">🔥 Ambil Sekarang — Rp 199rb</a>
-      <a href="#fitur" class="btn-outline">Lihat Fitur ↓</a>
+      <a href="#harga" class="btn-main">🔥 Coba Karyawan Digital Rp 199rb</a>
+      <a href="#posisi" class="btn-outline">Lihat 5 Posisinya ↓</a>
     </div>
-    <div class="hero-social rv d3">
-      <div class="av">
-        <span style="background:linear-gradient(135deg,var(--red),var(--red-light));color:#fff">A</span>
-        <span style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#1a1100">R</span>
-        <span style="background:linear-gradient(135deg,var(--red),var(--red-light));color:#fff">D</span>
-        <span style="background:#333;color:#888">+</span>
-      </div>
-      <span><strong>200+</strong> pengguna aktif · <strong>50K+</strong> task otomatis</span>
-    </div>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:16px;max-width:380px;text-align:center;line-height:1.5" class="rv d3">💡 Bayar sekali — akses selamanya. Termasuk update fitur di masa depan.</p>
   </section>
 
-  <!-- MARQUEE -->
+  <!-- ========== MARQUEE ========== -->
   <div class="marquee">
     <div class="marquee-inner">
-      <span class="red-grad">🤖 AUTOPOST</span><span class="sep">✦</span>
-      <span class="gold-grad">💬 CUSTOMER SERVICE</span><span class="sep">✦</span>
-      <span class="red-grad">📢 META ADS</span><span class="sep">✦</span>
-      <span class="gold-grad">📈 IHSG</span><span class="sep">✦</span>
-      <span class="red-grad">🔍 TREND ANALYZER</span><span class="sep">✦</span>
-      <span class="red-grad">🤖 AUTOPOST</span><span class="sep">✦</span>
-      <span class="gold-grad">💬 CUSTOMER SERVICE</span><span class="sep">✦</span>
-      <span class="red-grad">📢 META ADS</span><span class="sep">✦</span>
-      <span class="gold-grad">📈 IHSG</span><span class="sep">✦</span>
-      <span class="red-grad">🔍 TREND ANALYZER</span><span class="sep">✦</span>
+      <span class="gold-grad">📊 Riset Tren</span><span class="sep">✦</span>
+      <span class="red-grad">📱 Posting Otomatis</span><span class="sep">✦</span>
+      <span class="gold-grad">🎨 Carousel Generator</span><span class="sep">✦</span>
+      <span class="red-grad">✍️ Copywriting</span><span class="sep">✦</span>
+      <span class="gold-grad">🌐 Landing Page</span><span class="sep">✦</span>
+      <span class="red-grad">📊 Riset Tren</span><span class="sep">✦</span>
+      <span class="gold-grad">📱 Posting Otomatis</span><span class="sep">✦</span>
+      <span class="red-grad">🎨 Carousel Generator</span><span class="sep">✦</span>
+      <span class="gold-grad">✍️ Copywriting</span><span class="sep">✦</span>
+      <span class="red-grad">🌐 Landing Page</span><span class="sep">✦</span>
     </div>
   </div>
 
-  <!-- CASES -->
+  <!-- ========== PROBLEM ========== -->
   <section class="sec">
     <div class="container">
       <div class="divider rv"></div>
-      <h2 class="sec-title rv">Bukan <span class="red-text">Klaim</span>, Ini <span class="gold-text">Data Nyata</span></h2>
-      <p class="sec-sub rv d1">Rata-rata hasil pengguna AUTOMATA dalam 30 hari pertama.</p>
-      <div class="cases-grid">
-        <div class="case-card rv"><div class="case-num">87%</div><div class="case-label">Lebih hemat waktu urus konten sosmed</div></div>
-        <div class="case-card rv d1"><div class="case-num">3.2×</div><div class="case-label">ROAS iklan Meta naik dalam 2 minggu</div></div>
-        <div class="case-card rv d2"><div class="case-num">95%</div><div class="case-label">Chat pelanggan kejawab otomatis 24/7</div></div>
-        <div class="case-card rv d3"><div class="case-num">10×</div><div class="case-label">Lebih cepat baca tren & response pasar</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="sec">
-    <div class="container">
-      <div class="divider rv"></div>
-      <h2 class="sec-title rv">Gimana <span class="red-text">Cara Kerjanya</span>?</h2>
-      <p class="sec-sub rv d1">3 langkah doang. Serius.</p>
-      <ul class="step-list">
-        <li class="rv"><div class="step-num">1</div><div class="step-content"><h5>Pilih Agent yang Lo Butuh</h5><p>Autopost konten? CS otomatis? Iklan Meta? Saham? Trend analyzer? Atau semua? Tinggal aktifin.</p></div></li>
-        <li class="rv d1"><div class="step-num">2</div><div class="step-content"><h5>Set Sekali, Jalan Selamanya</h5><p>Setup awal cuma 10 menit. Setelah itu AI-nya kerja sendiri 24/7. Lo tidur pun tetep jalan.</p></div></li>
-        <li class="rv d2"><div class="step-num">3</div><div class="step-content"><h5>Pantau dari Dashboard / WA</h5><p>Laporan harian dikirim ke WhatsApp lo. Tinggal baca 2 menit — tau semuanya.</p></div></li>
+      <h2 class="sec-title rv">Lo Tahu Sendiri Kan<br><span class="red-text">Rasanya Punya Tim</span> Digital Marketing?</h2>
+      <p class="sec-sub rv d1">Atau malah — lo sendiri yang ngerjain semua?</p>
+      <ul class="prob-list">
+        <li class="rv"><div class="icon">💸</div><div><h4>Gaji tim digital = Rp 8-15 juta per bulan</h4><p>Dan itu baru 1-2 orang. Belum termasuk tunjangan, lembur, bonus.</p></div></li>
+        <li class="rv d1"><div class="icon">🔄</div><div><h4>Freelancer ganti-ganti — hasil gak konsisten</h4><p>Minggu ini rajin, minggu depan hilang. Lo briefing ulang tiap ganti orang.</p></div></li>
+        <li class="rv d2"><div class="icon">😮‍💨</div><div><h4>Lo jadi "orang serabutan" — riset, nulis, desain, posting sendiri</h4><p>Bisnis lo berhenti di titik lo. Padahal lo harus fokus ke produk & customer, bukan urus konten tiap hari.</p></div></li>
+        <li class="rv d3"><div class="icon">📉</div><div><h4>Konten gak konsisten — engagement drop</h4><p>Pernah posting rame, terus sepi, terus lupa posting — itu karena gak ada sistem yang jalan otomatis.</p></div></li>
       </ul>
     </div>
   </section>
 
-  <!-- DEMO CHAT -->
+  <!-- ========== SOLUTION ========== -->
   <section class="sec">
     <div class="container">
       <div class="divider rv"></div>
-      <h2 class="sec-title rv">Kayak Punya <span class="gold-text">Tim Marketing</span> Pribadi</h2>
-      <p class="sec-sub rv d1">Tapi yang kerja AI — bukan orang. Dan dia gak pernah tidur.</p>
-      <div class="demo-box rv d2">
-        <div class="chat user"><div class="lbl">🧑 Lo</div>Posting konten tentang produk baru ke semua sosmed jam 9 pagi, caption bahasa santai.</div>
-        <div class="chat ai"><div class="lbl">🤖 AUTOMATA</div>✅ Done! Konten udah di-post ke Instagram, Threads, TikTok, Facebook, LinkedIn, dan YouTube Shorts. Caption disesuaikan per platform.</div>
-        <div class="chat user"><div class="lbl">🧑 Lo</div>Kalau ada yang chat nanya harga, bales otomatis ya. Tapi kalau komplen, forward ke gue.</div>
-        <div class="chat ai"><div class="lbl">🤖 AUTOMATA</div>✅ CS Agent aktif. Tanya harga → auto-reply dari katalog. Komplen → eskalasi ke WA lo. 24/7.</div>
-        <div class="chat user"><div class="lbl">🧑 Lo</div>Budget iklan hari ini naikin 30% buat yang performa bagus aja.</div>
-        <div class="chat ai"><div class="lbl">🤖 AUTOMATA</div>✅ Budget shifted. Ad set "Lookalike-Jakarta" naik 30% — ROAS kemarin 4.2×. Yang boncos udah dipause otomatis.</div>
+      <h2 class="sec-title rv">Sekarang — Lo Punya<br><span class="gold-text">1 Karyawan Digital</span></h2>
+      <p class="sec-sub rv d1">Dia kerja 24/7. Merangkap 5 posisi. Lo bayar cukup SEKALI seumur hidup.</p>
+      <div class="sol-card rv d2">
+        <div class="big-icon">🧑‍💻</div>
+        <h3>Kenalin — Karyawan Digital</h3>
+        <p>Bukan kumpulan tools. Tapi satu AI agent utuh yang dirancang khusus buat ngehandle seluruh operasional digital marketing UMKM. Dari riset konten, bikin materi, posting, sampe generate landing page — semua dalam satu alur kerja terorkestrasi.</p>
+        <br>
+        <p style="font-size:0.82rem;color:var(--text-muted)">⚡ Powered by OpenClaw — 5 AI agent jalan bareng sebagai satu kesatuan.</p>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="sec" id="fitur">
+  <!-- ========== 5 POSITIONS ========== -->
+  <section class="sec" id="posisi">
     <div class="container">
       <div class="divider rv"></div>
-      <h2 class="sec-title rv">Kenalin <span class="gold-text">5 AI Agent</span> Lo</h2>
-      <p class="sec-sub rv d1">Masing-masing punya spesialisasi. Tapi semua kerja bareng di satu dashboard.</p>
-      <div class="feat-grid">
-        <div class="feat-card rv"><div class="icon" style="background:rgba(220,38,38,0.06);border-color:rgba(220,38,38,0.15)">📱</div><h3>AI Agent Autopost</h3><p>Bikin 1 konten, posting di 6 platform otomatis. Content bank, auto remix caption per platform, jadwal mingguan.</p></div>
-        <div class="feat-card rv d1"><div class="icon" style="background:rgba(230,168,56,0.06);border-color:rgba(230,168,56,0.15)">💬</div><h3>AI Agent Customer Service</h3><p>Auto-reply WA, Telegram, website chat 24/7. Tau kapan harus eskalasi ke lo. Pelanggan gak pernah nunggu.</p></div>
-        <div class="feat-card rv d2"><div class="icon" style="background:rgba(220,38,38,0.06);border-color:rgba(220,38,38,0.15)">📢</div><h3>AI Agent Meta Ads</h3><p>Auto campaign, smart audience finder, budget shifter real-time. Laporan harian dikirim ke WA lo tiap pagi.</p></div>
-        <div class="feat-card rv d3"><div class="icon" style="background:rgba(230,168,56,0.06);border-color:rgba(230,168,56,0.15)">📈</div><h3>AI Agent IHSG</h3><p>Screening 900+ saham tiap hari. Bandarmologi scanner, trading plan generator — entry/SL/TP pasti.</p></div>
-        <div class="feat-card rv d4"><div class="icon" style="background:rgba(220,38,38,0.06);border-color:rgba(220,38,38,0.15)">🔍</div><h3>AI Agent Trend Analyzer</h3><p>Scan Google Trends, TikTok, Twitter, Reddit — tau tren yang naik duluan. Auto-marketing playbook siap eksekusi.</p></div>
+      <h2 class="sec-title rv">Dia <span class="red-text">Merangkap 5 Posisi</span></h2>
+      <p class="sec-sub rv d1">Dan gak pernah minta gaji bulanan.</p>
+      <div class="pos-grid">
+        <div class="pos-card rv">
+          <div class="pos-num">01</div>
+          <div class="icon rb">📊</div>
+          <div class="pos-title">Posisi 1 — Riset Pasar</div>
+          <h3>AI Riset Tren</h3>
+          <p>Nyari topik konten & tren yang lagi naik di niche lo. Gak perlu mantengin Google Trends atau TikTok berjam-jam — tinggal liat rekomendasi yang udah dikurasi khusus buat bisnis lo.</p>
+        </div>
+        <div class="pos-card rv d1">
+          <div class="pos-num">02</div>
+          <div class="icon gb">📱</div>
+          <div class="pos-title">Posisi 2 — Admin Sosmed</div>
+          <h3>AI Posting Otomatis</h3>
+          <p>Auto-publish konten ke semua platform sosial media. Terintegrasi dengan Repliz — gratis 7 hari pertama buat lo tes, setelah itu terserah lo mau lanjut bayar Repliz atau posting manual.</p>
+        </div>
+        <div class="pos-card rv d2">
+          <div class="pos-num">03</div>
+          <div class="icon rb">🎨</div>
+          <div class="pos-title">Posisi 3 — Desainer Grafis</div>
+          <h3>AI Carousel Generator</h3>
+          <p>Bikin carousel Instagram/LinkedIn siap posting — tinggal masukin teks, desain otomatis. Template-nya gratis, gak perlu bayar ekstra. Cocok buat yang gak bisa desain.</p>
+        </div>
+        <div class="pos-card rv d3">
+          <div class="pos-num">04</div>
+          <div class="icon gb">✍️</div>
+          <div class="pos-title">Posisi 4 — Copywriter</div>
+          <h3>AI Copywriting</h3>
+          <p>Bikin caption, headline, deskripsi produk, sampe teks iklan. Nada bicaranya bisa lo tentuin — mau santai, profesional, atau playful. Tinggal kasih keyword, dia nulis.</p>
+        </div>
+        <div class="pos-card rv d4">
+          <div class="pos-num">05</div>
+          <div class="icon rb">🌐</div>
+          <div class="pos-title">Posisi 5 — Web Developer</div>
+          <h3>AI Landing Page</h3>
+          <p>Generate landing page dalam hitungan menit — dark mode premium, gold accent, siap dipake buat jualan, promosi, atau link in bio. Gak perlu coding.</p>
+        </div>
+      </div>
+      <div class="pos-note rv d5">
+        <strong>🧠 Yang bikin beda:</strong> Bukan 5 tools terpisah. Semua agent ini jalan terorkestrasi dalam satu alur — data riset tren langsung dipake buat konten, konten langsung didesain & diposting, semuanya nyambung.
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- ========== HOW IT WORKS ========== -->
   <section class="sec">
     <div class="container">
       <div class="divider rv"></div>
-      <h2 class="sec-title rv">Kata <span class="red-text">Mereka</span></h2>
-      <p class="sec-sub rv d1">200+ pebisnis udah pake. Ini cerita mereka.</p>
-      <div style="display:grid;gap:16px">
-        <div class="testi-card rv">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-text">"Dulu bangun pagi cuma buat posting & bales chat. Sekarang AUTOMATA handle semua. Konten jalan tiap jam, pelanggan puas, gue tinggal develop produk."</div>
-          <div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--red),var(--red-light));color:#fff">AR</div><div><div class="testi-name">Ahmad Rizky</div><div class="testi-role">Owner — Rizky Digital</div></div></div>
-        </div>
-        <div class="testi-card rv d1">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-text">"Meta Ads Agent juara banget. Budget iklan turun 40% tapi order naik 2× lipat. Yang paling gue suka — laporan pagi lewat WA, gak perlu buka Ads Manager."</div>
-          <div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#1a1100">DS</div><div><div class="testi-name">Dewi Sari</div><div class="testi-role">Founder — Skincare Local</div></div></div>
-        </div>
-        <div class="testi-card rv d2">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-text">"IHSG Agent & Trend Analyzer jadi senjata rahasia gue. Tau tren duluan, entry lebih presisi. Portfolio naik 28% dalam sebulan pertama pake."</div>
-          <div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,var(--red),var(--red-light));color:#fff">BH</div><div><div class="testi-name">Budi Hartono</div><div class="testi-role">Trader & Pebisnis</div></div></div>
-        </div>
-      </div>
+      <h2 class="sec-title rv">Gimana <span class="red-text">Cara Kerjanya</span>?</h2>
+      <p class="sec-sub rv d1">3 langkah doang. Udah punya 1 tim digital marketing.</p>
+      <ul class="step-list">
+        <li class="rv"><div class="step-num">1</div><div class="step-content"><h5>Pilih Niche & Target Audiens Lo</h5><p>Bisnis apa, target pasar siapa, mau aktif di platform mana. Cukup set sekali.</p></div></li>
+        <li class="rv d1"><div class="step-num">2</div><div class="step-content"><h5>Karyawan Digital Lo Jalan 24/7</h5><p>Dia riset tren → bikin konten → generate carousel → tulis copy → posting otomatis. Semua nyambung dalam satu alur orkestrasi. Lo tinggal pantau.</p></div></li>
+        <li class="rv d2"><div class="step-num">3</div><div class="step-content"><h5>Lo Fokus ke Bisnis — Urusan Digital Urusan Dia</h5><p>Gak perlu briefing tiap hari. Gak perlu ngejar-ngerjain deadline. Karyawan Digital lo kerja tanpa libur, tanpa lembur, tanpa minta naik gaji.</p></div></li>
+      </ul>
     </div>
   </section>
 
-  <!-- COMPARE -->
-  <section class="sec">
-    <div class="container">
-      <div class="divider rv"></div>
-      <h2 class="sec-title rv">AUTOMATA <span class="red-text">vs</span> Cara Lama</h2>
-      <p class="sec-sub rv d1">Bandingin sendiri.</p>
-      <table class="cmp-table rv d2">
-        <thead><tr><th></th><th>Manual / Hire Orang</th><th>AUTOMATA</th></tr></thead>
-        <tbody>
-          <tr><td>Posting konten tiap hari</td><td class="xx">✗ 1-2 jam/hari</td><td class="ck">✓</td></tr>
-          <tr><td>Bales chat pelanggan</td><td class="xx">✗ Respon lambat</td><td class="ck">✓</td></tr>
-          <tr><td>Kelola iklan Meta</td><td class="xx">✗ Mahal & ribet</td><td class="ck">✓</td></tr>
-          <tr><td>Riset tren pasar</td><td class="xx">✗ 3-5 jam/hari</td><td class="ck">✓</td></tr>
-          <tr><td>Monitoring saham</td><td class="xx">✗ Mantengin layar</td><td class="ck">✓</td></tr>
-          <tr><td>Biaya per bulan</td><td class="xx">Rp 5-15jt</td><td class="ck">Rp 199rb</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- PRICING -->
+  <!-- ========== PRICING ========== -->
   <section class="sec" id="harga">
     <div class="container">
       <div class="divider rv"></div>
       <h2 class="sec-title rv">Sekali Bayar, <span class="gold-text">Pake Selamanya</span></h2>
-      <p class="sec-sub rv d1">Gak ada langganan bulanan. Gak ada biaya tersembunyi.</p>
+      <p class="sec-sub rv d1">Gak ada langganan bulanan. Gak ada biaya tersembunyi. Karena ini karyawan, bukan software sewaan.</p>
       <div class="price-card rv d2">
-        <div class="price-badge">🔥 Promo Hari Ini</div>
+        <div class="price-badge">🔥 Promo Early Bird</div>
         <p class="price-strike">Rp 2.500.000</p>
         <p style="color:#666;font-size:0.85rem;text-decoration:line-through">Rp 500.000</p>
         <p class="price-amount">Rp 199rb</p>
-        <p class="price-period">Sekali bayar · Lifetime access · Semua 5 agent</p>
+        <p class="price-period">Sekali bayar · Lifetime access · Semua 5 posisi</p>
         <ul class="price-feats">
-          <li><span class="r">✓</span> Semua 5 AI Agent aktif</li>
-          <li><span class="g">✓</span> Unlimited task/hari</li>
-          <li><span class="r">✓</span> Multi-platform (IG, Threads, TikTok, dll)</li>
-          <li><span class="g">✓</span> Laporan harian ke WhatsApp</li>
+          <li><span class="r">✓</span> AI Riset Tren — update harian topik & konten</li>
+          <li><span class="g">✓</span> AI Posting Otomatis — semua platform sosmed</li>
+          <li><span class="r">✓</span> AI Carousel Generator — template gratis, unlimited</li>
+          <li><span class="g">✓</span> AI Copywriting — caption, headline, iklan</li>
+          <li><span class="r">✓</span> AI Landing Page — generate premium landing page</li>
+          <li><span class="g">✓</span> Orkestrasi OpenClaw — semua agent jalan nyambung</li>
           <li><span class="r">✓</span> Update fitur gratis selamanya</li>
-          <li><span class="g">✓</span> Prioritas support respon cepat</li>
-          <li><span class="r">✓</span> Export data & PDF</li>
           <li><span class="g">✓</span> 7 hari garansi uang kembali 100%</li>
         </ul>
-        <a href="#cta" class="btn-main" style="width:100%;justify-content:center;font-size:1.05rem;padding:18px">🔥 Ambil Promo Rp 199.000</a>
-        <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:14px">⏳ Promo <span style="color:var(--red-light);font-weight:600">hari ini aja</span> — besok balik ke Rp 500rb</p>
+        <a href="https://lynk.id/karyawandigital" target="_blank" class="btn-main" style="width:100%;justify-content:center;font-size:1.05rem;padding:18px">🔥 Ambil Karyawan Digital Rp 199.000</a>
+        <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:14px">⏳ Harga promo ini <span style="color:var(--red-light);font-weight:600">terbatas</span> — setelah cukup pengguna naik ke Rp 500rb</p>
       </div>
+      <p class="price-sub-text">💡 <strong>Yang lo bayar cuma ke kami sekali.</strong> Kalau nanti lo pilih pake fitur Posting Otomatis lewat Repliz, biaya langganan Repliz ditanggung lo langsung ke Repliz — itu opsional, gak wajib. Semua fitur lain tetep jalan tanpa Repliz.</p>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ========== FAQ ========== -->
   <section class="sec" id="faq">
     <div class="container">
       <div class="divider rv"></div>
-      <h2 class="sec-title rv">FAQ</h2>
-      <div class="faq-item on"><button class="faq-btn" onclick="tf(this)"><span>Gak paham teknologi — bisa pake?</span><span class="faq-icon">+</span></button><div class="faq-ans">Gampang banget. Interface-nya sederhana kayak chat WA. Setup awal cuma 10 menit, setelah itu jalan otomatis. Bahkan yang gaptek pun bisa.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Bisa pake semua agent barengan?</span><span class="faq-icon">+</span></button><div class="faq-ans">Ya! Semua 5 agent aktif barengan dan saling terintegrasi. Trend Analyzer ngasih tau topik viral → Autopost langsung bikin konten → Meta Ads promosiin → CS Agent bales chat calon buyer.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Data aman gak?</span><span class="faq-icon">+</span></button><div class="faq-ans">Semua data dienkripsi end-to-end. Gak ada yang dijual ke pihak ketiga. Lo bisa minta hapus semua data kapan aja.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Kenapa cuma Rp 199rb? Ini beneran?</span><span class="faq-icon">+</span></button><div class="faq-ans">Ini harga promo early bird. Setelah cukup banyak pengguna, harga bakal naik ke Rp 500rb. Yang sekarang beli, dapet harga ini selamanya — termasuk semua update.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Kalau gak puas bisa refund?</span><span class="faq-icon">+</span></button><div class="faq-ans">7 hari garansi uang kembali 100%. Tanpa nanya-nanya. Lo gak ada resiko apa-apa.</div></div>
+      <h2 class="sec-title rv">Yang Sering <span class="red-text">Ditanya</span></h2>
+      <div class="faq-item on"><button class="faq-btn" onclick="tf(this)"><span>Ini bedanya sama beli 5 tools terpisah apa?</span><span class="faq-icon">+</span></button><div class="faq-ans">Besar. Kalau lo beli tools terpisah, lo harus setup satu-satu, mindahin data manual, dan gak ada yang nyambung satu sama lain. Karyawan Digital adalah satu sistem terintegrasi — riset tren ngasih data ke copywriter, copywriter ngasih teks ke carousel generator dan posting otomatis. Satu alur, gak ribet.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Bayar sekali doang? Gak ada biaya bulanan?</span><span class="faq-icon">+</span></button><div class="faq-ans">Nol. Gak ada langganan bulanan. Gak ada biaya tersembunyi. Lo bayar Rp 199rb sekali, dapet akses lifetime ke semua fitur + update selamanya. Ini bukan software sewa — ini kayak lo gaji karyawan tapi cuma bayar sekali seumur hidup.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Soal Repliz — ini wajib bayar lagi ya?</span><span class="faq-icon">+</span></button><div class="faq-ans">Pertanyaan bagus. Gue jelasin jujur: AI Posting Otomatis terintegrasi sama Repliz — platform auto-publish ke sosmed. Repliz kasih free trial 7 hari, setelah itu lo bayar langsung ke Repliz kalau mau lanjut pake fitur auto-publish.<br><br>Tapi dengerin: <strong>gak ada paksaan.</strong> Kalau lo gak mau bayar Repliz, lo tetep bisa:<br>• Pake semua 4 agent lainnya (Riset Tren, Carousel, Copywriting, Landing Page)<br>• Nulis konten di AI Copywriting, tinggal copy-paste manual posting — tetap lebih cepet dari pada bikin dari nol<br>• Upgrade kapan aja kalau udah siap<br><br><strong>Intinya:</strong> lo beli Karyawan Digital, dapet semua fitur. Repliz adalah opsional — kayak lo punya staff yang bisa lo suruh anter paket pake Gojek, tapi lo juga bisa anter sendiri kalau mau hemat.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Gak paham teknologi — bisa pake?</span><span class="faq-icon">+</span></button><div class="faq-ans">Bisa banget. Interface-nya sederhana, kayak chat doang. Lo gak perlu bisa coding, gak perlu paham AI, gak perlu tahu API. Tinggal masukin keyword & target pasar, dia jalan sendiri.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Kalau gak puas bisa refund?</span><span class="faq-icon">+</span></button><div class="faq-ans">7 hari garansi uang kembali 100%, tanpa tanya-tanya. Lo coba dulu, kalau emang gak cocok — bilang, gue kembalikan uang lo. Gak ada resiko.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Produk ini cocok buat siapa aja?</span><span class="faq-icon">+</span></button><div class="faq-ans">Karyawan Digital dibuat khusus buat:<br>• UMKM yang pengen punya konten konsisten tanpa ribet<br>• Freelancer yang mau ningkatin personal branding tanpa buang waktu<br>• Content creator yang mulai lelah ngurusin semua sendiri<br>• Pebisnis yang gak punya budget gaji tim digital marketing tetap</div></div>
     </div>
   </section>
 
-  <!-- FINAL CTA -->
+  <!-- ========== FINAL CTA ========== -->
   <section class="final-cta" id="cta">
     <div class="divider rv"></div>
-    <h2 class="rv">Sementara Kompetitor<br>Masih <span class="red-text">Manual</span>...</h2>
-    <p class="rv d1" style="color:var(--text-sub);margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto">Lo udah punya 5 AI Agent yang kerja 24/7. Sekali bayar Rp 199rb — pake selamanya.</p>
-    <a href="#harga" class="btn-main rv d2" style="font-size:1.15rem;padding:20px 48px">🔥 Ambil Sekarang — Rp 199rb</a>
-    <p style="font-size:0.78rem;color:var(--text-muted);margin-top:18px" class="rv d3">7 hari garansi uang kembali · Tanpa resiko · Promo hari ini aja</p>
+    <h2 class="rv">Sementara Kompetitor Lo<br>Masih Nyari <span class="red-text">Admin Sosmed</span>...</h2>
+    <p class="rv d1" style="color:var(--text-sub);margin-bottom:28px;max-width:450px;margin-left:auto;margin-right:auto;font-size:1rem;line-height:1.6">Lo udah punya 1 Karyawan Digital yang merangkap 5 posisi. Sekali bayar Rp 199rb — pake selamanya.</p>
+    <a href="https://lynk.id/karyawandigital" target="_blank" class="btn-main rv d2" style="font-size:1.15rem;padding:20px 48px">🔥 Ambil Karyawan Digital — Rp 199rb</a>
+    <p style="font-size:0.78rem;color:var(--text-muted);margin-top:18px" class="rv d3">7 hari garansi uang kembali · Sekali bayar · Update gratis selamanya</p>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
-    <div class="footer-brand">🤖 AUTOMATA</div>
-    <p>© 2026 AUTOMATA — AI Agent Suite. All rights reserved.</p>
-    <p style="margin-top:6px">Dibuat dengan ✦ buat pebisnis Indonesia yang siap naik level</p>
+    <div class="footer-brand">🧑‍💻 Karyawan Digital</div>
+    <p>© 2026 KaryawanDigital.my.id — 1 Orang, 5 Posisi. Gaji Sekali.</p>
+    <p style="margin-top:6px">Dibuat buat UMKM & freelancer Indonesia yang siap naik level 🚀</p>
   </footer>
 
   <script>
