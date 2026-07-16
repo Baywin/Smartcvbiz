@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Karyawan Digital — 1 Orang, 5 Posisi. Gaji Sekali.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;background:#0a0608;color:#e8e8e8;overflow-x:hidden}
+    html{scroll-behavior:smooth;overflow-x:hidden;width:100%}
+    body{font-family:'Poppins',sans-serif;background:#0a0608;color:#e8e8e8;overflow-x:hidden;width:100%}
     a{text-decoration:none;color:inherit}
     .container{max-width:688px;margin:0 auto;padding:0 20px}
 
     :root{
-      --red:#dc2626;
-      --red-light:#ef4444;
-      --red-bright:#f87171;
-      --red-dark:#b91c1c;
+      --red:#ef4444;
+      --red-light:#f87171;
+      --red-bright:#fca5a5;
+      --red-dark:#dc2626;
       --gold:#e6a838;
       --gold-light:#f5d280;
       --gold-bright:#ffe08a;
@@ -26,9 +26,11 @@
       --text-main:#e8e8e8;
       --text-sub:#999;
       --text-muted:#666;
+      --surface:#0f0d0a;
+      --surface-2:#16131a;
     }
 
-    body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+    body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.015;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
 
     .rv{opacity:0;transform:translateY(30px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
     .rv.v{opacity:1;transform:translateY(0)}
@@ -63,9 +65,33 @@
       transition:all 0.3s;cursor:pointer;font-family:inherit;
     }
     .btn-outline:hover{background:rgba(230,168,56,0.06);border-color:rgba(230,168,56,0.5)}
+    .btn-yellow{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,#f5b800,#ffd21e);
+      color:#181200;font-weight:800;padding:18px 38px;border-radius:14px;
+      font-size:1.05rem;transition:all 0.3s;border:none;cursor:pointer;
+      box-shadow:0 8px 30px rgba(255,210,30,0.28);
+      font-family:inherit;
+    }
+    .btn-yellow:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(255,210,30,0.4)}
 
-    /* ====== HERO ====== */
-    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden}
+    /* STICKY TOP BANNER */
+    .top-banner{position:fixed;top:0;left:0;width:100%;z-index:10000;background:#0d1117;border-bottom:1px solid rgba(255,255,255,0.05);box-shadow:0 4px 30px rgba(0,0,0,0.5)}
+    .tb-marquee{background:#07090c;border-bottom:1px solid rgba(255,255,255,0.05);padding:8px 0;overflow:hidden;white-space:nowrap;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;color:var(--text-sub)}
+    .tb-marquee-inner{display:inline-flex;animation:mq 25s linear infinite}
+    .tb-marquee span{padding:0 15px}
+    .tb-marquee .hl{color:var(--gold)}
+    .tb-main{padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+    .tb-text{font-size:0.95rem;font-weight:600;display:flex;align-items:center;gap:8px;color:#eee}
+    .tb-timer{display:flex;gap:6px;align-items:center;font-weight:800;color:var(--text-sub)}
+    .time-box{background:#161b22;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:4px 8px;text-align:center;min-width:48px}
+    .time-box .num{font-size:1.15rem;font-weight:800;line-height:1;color:#fff}
+    .time-box .lbl{font-size:0.55rem;text-transform:uppercase;color:var(--text-muted);margin-top:2px}
+    .tb-btn{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;font-weight:800;padding:10px 20px;border-radius:8px;font-size:0.9rem;transition:all 0.3s;box-shadow:0 4px 15px rgba(230,168,56,0.3)}
+    .tb-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(230,168,56,0.5)}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:160px 20px 60px;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(220,38,38,0.08) 0%,rgba(230,168,56,0.04) 40%,transparent 70%);pointer-events:none}
     .hero::after{content:'';position:absolute;bottom:-20%;right:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(230,168,56,0.06) 0%,transparent 70%);pointer-events:none}
     .hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
@@ -73,28 +99,33 @@
     .hero-particles span:nth-child(odd){background:var(--red-light)}
     .hero-particles span:nth-child(even){background:var(--gold)}
     @keyframes fp{0%{opacity:0;transform:translateY(100vh) scale(0)}20%{opacity:0.5}100%{opacity:0;transform:translateY(-100px) scale(1)}}
-
     .hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.2);border-radius:999px;padding:8px 22px;font-size:0.78rem;font-weight:600;color:var(--red-bright);margin-bottom:36px}
     .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pd 2s infinite}
     @keyframes pd{0%,100%{opacity:0.4;transform:scale(0.8)}50%{opacity:1;transform:scale(1.3)}}
-
-    .hero h1{font-family:'Playfair Display',serif;font-size:2.9rem;font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:18px;max-width:620px;background:linear-gradient(135deg,#fff 0%,#f5d280 30%,var(--red-light) 60%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shm 4s linear infinite}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2.9rem;font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:18px;background:linear-gradient(135deg,#fff 0%,#f5d280 30%,var(--red-light) 60%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shm 4s linear infinite}
     @keyframes shm{0%{background-position:0% center}100%{background-position:200% center}}
-    .hero h1 .small{display:block;font-size:1.2rem;font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:0;margin-top:10px;background:linear-gradient(135deg,#fff,var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:1.05rem;color:var(--text-sub);max-width:500px;line-height:1.7;margin-bottom:32px}
+    .hero-points{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+    .hero-points li{background:rgba(230,168,56,0.04);border:1px solid var(--border-gold);border-radius:999px;padding:8px 18px;font-size:0.82rem;font-weight:600;transition:all 0.3s}
+    /* Video */
+    .vid-wrapper{margin:0 auto 32px;max-width:500px}
+    .vid-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6);position:relative}
+    .vid-header{background:#fff;padding:16px 20px;position:relative}
+    .vid-badge{display:inline-flex;align-items:center;gap:6px;background:#111;color:#fccb2d;font-size:0.72rem;font-weight:800;padding:6px 14px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em}
+    .vid-header p{color:#111;font-weight:800;font-size:1rem;line-height:1.4}
+    .vid-arrow{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);width:32px;height:32px;background:#fccb2d;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:10}
+    .vid-player{background:linear-gradient(180deg,#111624 0%,#06090e 100%);height:340px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .vid-duration{position:absolute;top:14px;right:14px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:0.65rem;font-weight:700;padding:4px 10px;border-radius:999px;display:flex;align-items:center;gap:4px}
+    .play-btn{width:68px;height:68px;background:#ee3939;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 30px rgba(238,57,57,0.4);transition:all 0.3s;margin-bottom:12px}
+    .play-btn:hover{transform:scale(1.1);box-shadow:0 0 45px rgba(238,57,57,0.6)}
+    .play-text{font-size:0.75rem;font-weight:600;color:#7b849b;text-transform:uppercase;letter-spacing:0.05em}
+    .vid-tags{display:flex;gap:10px;justify-content:center;margin-top:14px}
+    .vid-tag{background:#141a28;border:1px solid rgba(255,255,255,0.06);padding:8px 16px;border-radius:999px;font-size:0.78rem;font-weight:600;color:#e2e8f0}
+    .vid-tag span{color:var(--gold)}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:24px}
 
-    .hero-sub{font-size:1.05rem;color:var(--text-sub);max-width:500px;line-height:1.7;margin-bottom:40px}
-    .hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:48px}
-
-    /* ====== PROBLEM ====== */
-    .prob-list{list-style:none;display:grid;gap:16px}
-    .prob-list li{display:flex;align-items:flex-start;gap:14px;padding:18px;border-radius:16px;background:rgba(220,38,38,0.03);border:1px solid rgba(220,38,38,0.08);transition:all 0.3s}
-    .prob-list li:hover{border-color:rgba(220,38,38,0.2);background:rgba(220,38,38,0.06)}
-    .prob-list .icon{font-size:1.2rem;flex-shrink:0;margin-top:1px}
-    .prob-list h4{font-size:0.95rem;font-weight:700;margin-bottom:2px}
-    .prob-list p{font-size:0.82rem;color:var(--text-sub);line-height:1.5}
-
-    /* ====== MARQUEE ====== */
-    .marquee{overflow:hidden;padding:24px 0;border-top:1px solid rgba(230,168,56,0.08);border-bottom:1px solid rgba(230,168,56,0.08);background:linear-gradient(180deg,rgba(220,38,38,0.02) 0%,transparent 100%);white-space:nowrap}
+    /* MARQUEE */
+    .marquee{overflow:hidden;padding:20px 0;border-top:1px solid rgba(230,168,56,0.08);border-bottom:1px solid rgba(230,168,56,0.08);background:linear-gradient(180deg,rgba(220,38,38,0.02) 0%,transparent 100%);white-space:nowrap}
     .marquee-inner{display:inline-flex;animation:mq 30s linear infinite}
     .marquee-inner span{font-size:1rem;font-weight:700;padding:0 36px;text-transform:uppercase;letter-spacing:0.06em}
     .marquee-inner span.gold-grad{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -102,18 +133,41 @@
     .marquee-inner span.sep{-webkit-text-fill-color:rgba(230,168,56,0.25);font-size:0.7rem}
     @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    /* ====== SOLUTION ====== */
-    .sol-card{background:linear-gradient(180deg,rgba(230,168,56,0.04) 0%,rgba(255,255,255,0.01) 100%);border:1.5px solid var(--border-gold);border-radius:24px;padding:36px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(220,38,38,0.03),0 0 30px rgba(230,168,56,0.03)}
+    /* TARGET PERSONA */
+    .pers-grid{display:grid;gap:12px}
+    .pers-card{display:flex;align-items:flex-start;gap:16px;padding:18px;border-radius:16px;border:1px solid var(--border-gold);background:linear-gradient(180deg,rgba(230,168,56,0.03) 0%,rgba(255,255,255,0.01) 100%);transition:all 0.3s}
+    .pers-card:hover{border-color:rgba(230,168,56,0.3)}
+    .pers-icon{font-size:1.5rem;flex-shrink:0;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-gold);background:rgba(230,168,56,0.04)}
+    .pers-text h4{font-size:0.88rem;font-weight:700;margin-bottom:2px}
+    .pers-text p{font-size:0.78rem;color:var(--text-sub);line-height:1.5}
+
+    /* FOUNDER LETTER */
+    .letter-box{background:linear-gradient(180deg,rgba(230,168,56,0.03) 0%,rgba(255,255,255,0.01) 100%);border:1px solid var(--border-gold);border-radius:24px;padding:36px 28px;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(220,38,38,0.03)}
+    .letter-box::before{content:'"';position:absolute;top:-10px;left:16px;font-size:8rem;color:rgba(230,168,56,0.06);font-family:'Playfair Display',serif;line-height:1}
+    .letter-box .dear{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:14px}
+    .letter-box p{font-size:0.88rem;color:var(--text-sub);line-height:1.75;margin-bottom:14px}
+    .letter-box .sign{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold);margin-top:18px}
+
+    /* PROBLEM */
+    .prob-list{display:grid;gap:16px}
+    .prob-list li{display:flex;align-items:flex-start;gap:14px;padding:18px;border-radius:16px;background:rgba(220,38,38,0.03);border:1px solid rgba(220,38,38,0.08);transition:all 0.3s}
+    .prob-list li:hover{border-color:rgba(220,38,38,0.2);background:rgba(220,38,38,0.06)}
+    .prob-list .icon{font-size:1.2rem;flex-shrink:0;margin-top:1px}
+    .prob-list h4{font-size:0.95rem;font-weight:700;margin-bottom:2px}
+    .prob-list p{font-size:0.82rem;color:var(--text-sub);line-height:1.5}
+
+    /* SOLUTION */
+    .sol-card{background:linear-gradient(180deg,rgba(230,168,56,0.04) 0%,rgba(255,255,255,0.01) 100%);border:1.5px solid var(--border-gold);border-radius:24px;padding:36px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(220,38,38,0.03)}
     .sol-card .big-icon{font-size:3rem;margin-bottom:16px}
     .sol-card h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;margin-bottom:14px}
     .sol-card p{font-size:0.9rem;color:var(--text-sub);line-height:1.7;max-width:460px;margin:0 auto}
 
-    /* ====== 5 POSITIONS ====== */
+    /* 5 POSITIONS */
     .pos-grid{display:grid;gap:16px}
     .pos-card{background:linear-gradient(180deg,rgba(230,168,56,0.04) 0%,rgba(255,255,255,0.01) 100%);border:1px solid var(--border-gold);border-radius:20px;padding:28px 24px;transition:all 0.4s;position:relative;overflow:hidden}
-    .pos-card:hover{border-color:rgba(230,168,56,0.4);box-shadow:0 0 30px rgba(220,38,38,0.05),0 0 25px rgba(230,168,56,0.05)}
+    .pos-card:hover{border-color:rgba(230,168,56,0.4);box-shadow:0 0 30px rgba(220,38,38,0.05)}
     .pos-card .pos-num{position:absolute;top:16px;right:20px;font-size:3rem;font-weight:900;color:rgba(220,38,38,0.06);line-height:1;font-family:'Playfair Display',serif;pointer-events:none}
-    .pos-card .icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;border:1px solid var(--border-gold);position:relative;z-index:1}
+    .pos-card .icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;border:1px solid var(--border-gold)}
     .pos-card .icon.rb{background:rgba(220,38,38,0.06);border-color:rgba(220,38,38,0.15)}
     .pos-card .icon.gb{background:rgba(230,168,56,0.06);border-color:rgba(230,168,56,0.15)}
     .pos-card h3{font-size:1rem;font-weight:700;margin-bottom:4px}
@@ -121,16 +175,40 @@
     .pos-card p{font-size:0.85rem;color:var(--text-sub);line-height:1.6}
     .pos-note{text-align:center;margin-top:18px;padding:16px;border-radius:14px;background:rgba(230,168,56,0.04);border:1px dashed rgba(230,168,56,0.15);font-size:0.85rem;color:var(--text-sub);line-height:1.6}
 
-    /* ====== HOW IT WORKS ====== */
+    /* COMPARE TABLE */
+    .cmp-table{width:100%;border-collapse:collapse;font-size:0.85rem;border:1px solid var(--border-gold);border-radius:16px;overflow:hidden}
+    .cmp-table th{text-align:left;padding:14px 16px;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-sub);background:rgba(230,168,56,0.04);border-bottom:1px solid var(--border-gold)}
+    .cmp-table th:last-child{text-align:center;color:var(--gold-light)}
+    .cmp-table td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.03);color:#bbb}
+    .cmp-table td:last-child{text-align:center}
+    .cmp-table .ck{color:var(--gold);font-weight:700;font-size:1rem}
+    .cmp-table .xx{color:#444}
+    .cmp-table .ok{color:var(--red-light);font-weight:600}
+
+    /* STEPS */
     .step-list{list-style:none}
     .step-list li{display:flex;align-items:flex-start;gap:18px;padding:24px 0;border-bottom:1px solid rgba(230,168,56,0.06)}
     .step-list li:last-child{border-bottom:none}
-    .step-num{width:42px;height:42px;border-radius:14px;background:rgba(220,38,38,0.08);border:1.5px solid rgba(220,38,38,0.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;color:var(--red-light);flex-shrink:0;box-shadow:0 0 15px rgba(220,38,38,0.05)}
+    .step-num{width:42px;height:42px;border-radius:14px;background:rgba(220,38,38,0.08);border:1.5px solid rgba(220,38,38,0.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;color:var(--red-light);flex-shrink:0}
     .step-content h5{font-size:0.95rem;font-weight:700;margin-bottom:6px}
     .step-content p{font-size:0.85rem;color:var(--text-sub);line-height:1.6}
 
-    /* ====== PRICING ====== */
-    .price-card{background:linear-gradient(180deg,rgba(220,38,38,0.06) 0%,rgba(230,168,56,0.03) 50%,rgba(255,255,255,0.01) 100%);border:1.5px solid rgba(230,168,56,0.25);border-radius:24px;padding:44px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(220,38,38,0.05),0 0 40px rgba(230,168,56,0.04)}
+    /* WHY CHEAP */
+    .why-box{background:linear-gradient(180deg,rgba(230,168,56,0.03) 0%,rgba(255,255,255,0.01) 100%);border:1px solid var(--border-gold);border-radius:24px;padding:36px 28px}
+    .why-box h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;margin-bottom:14px}
+    .why-box p{font-size:0.88rem;color:var(--text-sub);line-height:1.7;margin-bottom:12px}
+    .why-box .acc{color:var(--gold-light);font-weight:600}
+
+    /* GUARANTEE */
+    .guar-wrap{max-width:560px;margin:0 auto;border:1px solid var(--border-gold);border-radius:24px;padding:36px 28px;display:flex;gap:24px;align-items:center;background:linear-gradient(180deg,rgba(230,168,56,0.02) 0%,transparent 100%)}
+    .guar-seal{width:130px;height:130px;border-radius:50%;border:2px dashed var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex-shrink:0}
+    .guar-seal .num{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:var(--gold);line-height:1}
+    .guar-seal .lbl{font-size:0.65rem;font-weight:700;text-transform:uppercase;color:var(--text-sub);margin-top:4px}
+    .guar-text h4{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;margin-bottom:8px}
+    .guar-text p{font-size:0.85rem;color:var(--text-sub);line-height:1.6}
+
+    /* PRICING */
+    .price-card{background:linear-gradient(180deg,rgba(220,38,38,0.06) 0%,rgba(230,168,56,0.03) 50%,rgba(255,255,255,0.01) 100%);border:1.5px solid rgba(230,168,56,0.25);border-radius:24px;padding:44px 28px;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(220,38,38,0.05)}
     .price-card::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(220,38,38,0.08) 0%,transparent 70%);pointer-events:none}
     .price-card::after{content:'';position:absolute;bottom:-100px;right:-100px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(230,168,56,0.06) 0%,transparent 70%);pointer-events:none}
     .price-badge{display:inline-block;background:linear-gradient(135deg,var(--red-dark),var(--red),var(--gold));color:#fff;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;padding:8px 22px;border-radius:999px;margin-bottom:24px;box-shadow:0 4px 16px rgba(220,38,38,0.3)}
@@ -145,7 +223,7 @@
     .price-feats li span.r{color:var(--red-light)}
     .price-sub-text{text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:30px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6;padding:16px;border-radius:14px;background:rgba(230,168,56,0.03);border:1px dashed rgba(230,168,56,0.08)}
 
-    /* ====== FAQ ====== */
+    /* FAQ */
     .faq-item{border-bottom:1px solid rgba(230,168,56,0.06);padding:18px 0}
     .faq-btn{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;color:var(--text-main);font-size:0.95rem;font-weight:600;cursor:pointer;padding:4px 0;text-align:left;font-family:inherit}
     .faq-btn:focus{outline:none}
@@ -154,222 +232,326 @@
     .faq-ans{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;color:var(--text-sub);font-size:0.9rem;line-height:1.65}
     .faq-item.on .faq-ans{max-height:500px;padding-top:14px}
 
-    /* ====== FINAL CTA ====== */
+    /* FINAL CTA */
     .final-cta{text-align:center;padding:80px 20px;position:relative}
     .final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(220,38,38,0.06) 0%,rgba(230,168,56,0.03) 50%,transparent 70%);pointer-events:none}
     .final-cta h2{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;margin-bottom:14px}
 
-    /* ====== FOOTER ====== */
+    /* FOOTER */
     .footer{border-top:1px solid rgba(230,168,56,0.06);padding:36px 20px;text-align:center;font-size:0.8rem;color:var(--text-muted)}
     .footer-brand{font-family:'Playfair Display',serif;font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--red-light),var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
 
     @media(max-width:640px){
-      .hero h1{font-size:2rem}.hero h1 .small{font-size:1rem}.sec-title{font-size:1.45rem}.price-amount{font-size:3rem}.final-cta h2{font-size:1.6rem}
+      .hero h1{font-size:2rem}.sec-title{font-size:1.45rem}.price-amount{font-size:3rem}.final-cta h2{font-size:1.6rem}
+      .proof-grid{grid-template-columns:1fr}.guar-wrap{flex-direction:column;text-align:center}
+      .cmp-table{font-size:0.75rem}.cmp-table td,.cmp-table th{padding:10px 8px}
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <div class="hero-particles">
-      <span style="left:10%;animation-delay:0s;animation-duration:7s"></span>
-      <span style="left:25%;animation-delay:1.5s;animation-duration:5s"></span>
-      <span style="left:45%;animation-delay:3s;animation-duration:8s"></span>
-      <span style="left:65%;animation-delay:0.5s;animation-duration:6s"></span>
-      <span style="left:80%;animation-delay:2s;animation-duration:7s"></span>
-      <span style="left:90%;animation-delay:4s;animation-duration:5s"></span>
-      <span style="left:35%;animation-delay:1s;animation-duration:9s"></span>
-      <span style="left:55%;animation-delay:2.5s;animation-duration:6s"></span>
+<!-- ====== STICKY TOP BANNER ====== -->
+<header class="top-banner">
+  <div class="tb-marquee">
+    <div class="tb-marquee-inner">
+      <span>🔥 <span class="hl">PROMO EARLY BIRD</span> — Harga Kembali Naik Dalam Waktu Dekat</span>
+      <span>🔥 <span class="hl">PROMO EARLY BIRD</span> — Harga Kembali Naik Dalam Waktu Dekat</span>
     </div>
-    <div class="hero-badge rv"><span class="dot"></span> Sekali Bayar · Pake Selamanya</div>
-    <h1 class="rv">
-      Gaji 1 Karyawan<br>Digital Marketing
-      <span class="small">Dia merangkap 5 posisi. Lo bayar sekali.</span>
-    </h1>
-    <p class="hero-sub rv d1">Bukan 5 tools terpisah. Tapi 1 AI agent yang kerja sebagai riset market, admin sosmed, desainer, copywriter, dan web developer — 24/7, tanpa minta lembur.</p>
-    <div class="hero-cta rv d2">
-      <a href="#harga" class="btn-main">🔥 Coba Karyawan Digital Rp 199rb</a>
-      <a href="#posisi" class="btn-outline">Lihat 5 Posisinya ↓</a>
+  </div>
+  <div class="tb-main">
+    <div class="tb-text">⏳ Promo berakhir dalam</div>
+    <div class="tb-timer" id="tbtimer">
+      <div class="time-box"><div class="num" id="tbd">03</div><div class="lbl">Hari</div></div>
+      <div style="font-size:1.4rem;color:var(--text-muted)">:</div>
+      <div class="time-box"><div class="num" id="tbh">12</div><div class="lbl">Jam</div></div>
+      <div style="font-size:1.4rem;color:var(--text-muted)">:</div>
+      <div class="time-box"><div class="num" id="tbm">45</div><div class="lbl">Menit</div></div>
+      <div style="font-size:1.4rem;color:var(--text-muted)">:</div>
+      <div class="time-box"><div class="num" id="tbs">30</div><div class="lbl">Detik</div></div>
     </div>
-    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:16px;max-width:380px;text-align:center;line-height:1.5" class="rv d3">💡 Bayar sekali — akses selamanya. Termasuk update fitur di masa depan.</p>
-  </section>
+    <a href="#harga" class="tb-btn">🔥 Ambil Sekarang</a>
+  </div>
+</header>
 
-  <!-- ========== MARQUEE ========== -->
-  <div class="marquee">
-    <div class="marquee-inner">
-      <span class="gold-grad">📊 Riset Tren</span><span class="sep">✦</span>
-      <span class="red-grad">📱 Posting Otomatis</span><span class="sep">✦</span>
-      <span class="gold-grad">🎨 Carousel Generator</span><span class="sep">✦</span>
-      <span class="red-grad">✍️ Copywriting</span><span class="sep">✦</span>
-      <span class="gold-grad">🌐 Landing Page</span><span class="sep">✦</span>
-      <span class="red-grad">📊 Riset Tren</span><span class="sep">✦</span>
-      <span class="gold-grad">📱 Posting Otomatis</span><span class="sep">✦</span>
-      <span class="red-grad">🎨 Carousel Generator</span><span class="sep">✦</span>
-      <span class="gold-grad">✍️ Copywriting</span><span class="sep">✦</span>
-      <span class="red-grad">🌐 Landing Page</span><span class="sep">✦</span>
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-particles">
+    <span style="left:10%;animation-delay:0s;animation-duration:7s"></span>
+    <span style="left:25%;animation-delay:1.5s;animation-duration:5s"></span>
+    <span style="left:45%;animation-delay:3s;animation-duration:8s"></span>
+    <span style="left:65%;animation-delay:0.5s;animation-duration:6s"></span>
+    <span style="left:80%;animation-delay:2s;animation-duration:7s"></span>
+    <span style="left:90%;animation-delay:4s;animation-duration:5s"></span>
+  </div>
+  <div class="hero-badge rv"><span class="dot"></span> Sekali Bayar · Pake Selamanya</div>
+  <h1 class="rv">Gaji 1 Karyawan<br>Digital Marketing</h1>
+  <p class="hero-sub rv d1">Bukan 5 tools terpisah. Tapi 1 AI agent yang kerja sebagai <strong>riset market, admin sosmed, desainer grafis, copywriter, dan web developer</strong> — 24/7, tanpa minta lembur.</p>
+  
+  <ul class="hero-points rv d2">
+    <li><span class="icon">📊</span>Riset Pasar</li>
+    <li><span class="icon">✍️</span>Copywriting</li>
+    <li><span class="icon">🎨</span>Desain Grafis</li>
+    <li><span class="icon">📱</span>Auto-Posting</li>
+    <li><span class="icon">🌐</span>Landing Page</li>
+  </ul>
+
+  <div class="vid-wrapper rv d3">
+    <div class="vid-card">
+      <div class="vid-header">
+        <div class="vid-badge">▶ TONTON DULU · 30 DETIK</div>
+        <p>Tonton video ini dulu sebelum lanjut, biar lo tau cara kerja <span style="color:var(--red-light)">5-in-1 Karyawan Digital</span> ini!</p>
+        <div class="vid-arrow"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#000"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></div>
+      </div>
+      <div class="vid-player">
+        <div class="vid-duration">
+          <svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:#fff"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          30 DETIK
+        </div>
+        <div class="play-btn"><svg viewBox="0 0 24 24" style="width:30px;height:30px;fill:#fff"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="play-text">TAP UNTUK NONTON</div>
+      </div>
+    </div>
+    <div class="vid-tags">
+      <div class="vid-tag"><span>#</span>Ramah Pemula</div>
+      <div class="vid-tag"><span>#</span>Step by Step dari Nol</div>
     </div>
   </div>
 
-  <!-- ========== PROBLEM ========== -->
-  <section class="sec">
-    <div class="container">
-      <div class="divider rv"></div>
-      <h2 class="sec-title rv">Lo Tahu Sendiri Kan<br><span class="red-text">Rasanya Punya Tim</span> Digital Marketing?</h2>
-      <p class="sec-sub rv d1">Atau malah — lo sendiri yang ngerjain semua?</p>
-      <ul class="prob-list">
-        <li class="rv"><div class="icon">💸</div><div><h4>Gaji tim digital = Rp 8-15 juta per bulan</h4><p>Dan itu baru 1-2 orang. Belum termasuk tunjangan, lembur, bonus.</p></div></li>
-        <li class="rv d1"><div class="icon">🔄</div><div><h4>Freelancer ganti-ganti — hasil gak konsisten</h4><p>Minggu ini rajin, minggu depan hilang. Lo briefing ulang tiap ganti orang.</p></div></li>
-        <li class="rv d2"><div class="icon">😮‍💨</div><div><h4>Lo jadi "orang serabutan" — riset, nulis, desain, posting sendiri</h4><p>Bisnis lo berhenti di titik lo. Padahal lo harus fokus ke produk & customer, bukan urus konten tiap hari.</p></div></li>
-        <li class="rv d3"><div class="icon">📉</div><div><h4>Konten gak konsisten — engagement drop</h4><p>Pernah posting rame, terus sepi, terus lupa posting — itu karena gak ada sistem yang jalan otomatis.</p></div></li>
-      </ul>
-    </div>
-  </section>
+  <div class="hero-cta rv d4">
+    <a href="#harga" class="btn-main">🔥 Coba Karyawan Digital Rp 199rb</a>
+    <a href="#posisi" class="btn-outline">Lihat 5 Posisinya ↓</a>
+  </div>
+  <p class="hero-foot rv d5">💡 Bayar sekali — akses selamanya. Termasuk update fitur di masa depan.</p>
+</section>
 
-  <!-- ========== SOLUTION ========== -->
-  <section class="sec">
-    <div class="container">
-      <div class="divider rv"></div>
-      <h2 class="sec-title rv">Sekarang — Lo Punya<br><span class="gold-text">1 Karyawan Digital</span></h2>
-      <p class="sec-sub rv d1">Dia kerja 24/7. Merangkap 5 posisi. Lo bayar cukup SEKALI seumur hidup.</p>
-      <div class="sol-card rv d2">
-        <div class="big-icon">🧑‍💻</div>
-        <h3>Kenalin — Karyawan Digital</h3>
-        <p>Bukan kumpulan tools. Tapi satu AI agent utuh yang dirancang khusus buat ngehandle seluruh operasional digital marketing UMKM. Dari riset konten, bikin materi, posting, sampe generate landing page — semua dalam satu alur kerja terorkestrasi.</p>
-        <br>
-        <p style="font-size:0.82rem;color:var(--text-muted)">⚡ Powered by OpenClaw — 5 AI agent jalan bareng sebagai satu kesatuan.</p>
-      </div>
-    </div>
-  </section>
+<!-- ====== MARQUEE ====== -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span class="gold-grad">📊 Riset Tren</span><span class="sep">✦</span>
+    <span class="red-grad">📱 Posting Otomatis</span><span class="sep">✦</span>
+    <span class="gold-grad">🎨 Carousel Generator</span><span class="sep">✦</span>
+    <span class="red-grad">✍️ Copywriting</span><span class="sep">✦</span>
+    <span class="gold-grad">🌐 Landing Page</span><span class="sep">✦</span>
+    <span class="red-grad">📊 Riset Tren</span><span class="sep">✦</span>
+    <span class="gold-grad">📱 Posting Otomatis</span><span class="sep">✦</span>
+    <span class="red-grad">🎨 Carousel Generator</span><span class="sep">✦</span>
+    <span class="gold-grad">✍️ Copywriting</span><span class="sep">✦</span>
+    <span class="red-grad">🌐 Landing Page</span><span class="sep">✦</span>
+  </div>
+</div>
 
-  <!-- ========== 5 POSITIONS ========== -->
-  <section class="sec" id="posisi">
-    <div class="container">
-      <div class="divider rv"></div>
-      <h2 class="sec-title rv">Dia <span class="red-text">Merangkap 5 Posisi</span></h2>
-      <p class="sec-sub rv d1">Dan gak pernah minta gaji bulanan.</p>
-      <div class="pos-grid">
-        <div class="pos-card rv">
-          <div class="pos-num">01</div>
-          <div class="icon rb">📊</div>
-          <div class="pos-title">Posisi 1 — Riset Pasar</div>
-          <h3>AI Riset Tren</h3>
-          <p>Nyari topik konten & tren yang lagi naik di niche lo. Gak perlu mantengin Google Trends atau TikTok berjam-jam — tinggal liat rekomendasi yang udah dikurasi khusus buat bisnis lo.</p>
-        </div>
-        <div class="pos-card rv d1">
-          <div class="pos-num">02</div>
-          <div class="icon gb">📱</div>
-          <div class="pos-title">Posisi 2 — Admin Sosmed</div>
-          <h3>AI Posting Otomatis</h3>
-          <p>Auto-publish konten ke semua platform sosial media. Terintegrasi dengan Repliz — gratis 7 hari pertama buat lo tes, setelah itu terserah lo mau lanjut bayar Repliz atau posting manual.</p>
-        </div>
-        <div class="pos-card rv d2">
-          <div class="pos-num">03</div>
-          <div class="icon rb">🎨</div>
-          <div class="pos-title">Posisi 3 — Desainer Grafis</div>
-          <h3>AI Carousel Generator</h3>
-          <p>Bikin carousel Instagram/LinkedIn siap posting — tinggal masukin teks, desain otomatis. Template-nya gratis, gak perlu bayar ekstra. Cocok buat yang gak bisa desain.</p>
-        </div>
-        <div class="pos-card rv d3">
-          <div class="pos-num">04</div>
-          <div class="icon gb">✍️</div>
-          <div class="pos-title">Posisi 4 — Copywriter</div>
-          <h3>AI Copywriting</h3>
-          <p>Bikin caption, headline, deskripsi produk, sampe teks iklan. Nada bicaranya bisa lo tentuin — mau santai, profesional, atau playful. Tinggal kasih keyword, dia nulis.</p>
-        </div>
-        <div class="pos-card rv d4">
-          <div class="pos-num">05</div>
-          <div class="icon rb">🌐</div>
-          <div class="pos-title">Posisi 5 — Web Developer</div>
-          <h3>AI Landing Page</h3>
-          <p>Generate landing page dalam hitungan menit — dark mode premium, gold accent, siap dipake buat jualan, promosi, atau link in bio. Gak perlu coding.</p>
-        </div>
-      </div>
-      <div class="pos-note rv d5">
-        <strong>🧠 Yang bikin beda:</strong> Bukan 5 tools terpisah. Semua agent ini jalan terorkestrasi dalam satu alur — data riset tren langsung dipake buat konten, konten langsung didesain & diposting, semuanya nyambung.
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== HOW IT WORKS ========== -->
-  <section class="sec">
-    <div class="container">
-      <div class="divider rv"></div>
-      <h2 class="sec-title rv">Gimana <span class="red-text">Cara Kerjanya</span>?</h2>
-      <p class="sec-sub rv d1">3 langkah doang. Udah punya 1 tim digital marketing.</p>
-      <ul class="step-list">
-        <li class="rv"><div class="step-num">1</div><div class="step-content"><h5>Pilih Niche & Target Audiens Lo</h5><p>Bisnis apa, target pasar siapa, mau aktif di platform mana. Cukup set sekali.</p></div></li>
-        <li class="rv d1"><div class="step-num">2</div><div class="step-content"><h5>Karyawan Digital Lo Jalan 24/7</h5><p>Dia riset tren → bikin konten → generate carousel → tulis copy → posting otomatis. Semua nyambung dalam satu alur orkestrasi. Lo tinggal pantau.</p></div></li>
-        <li class="rv d2"><div class="step-num">3</div><div class="step-content"><h5>Lo Fokus ke Bisnis — Urusan Digital Urusan Dia</h5><p>Gak perlu briefing tiap hari. Gak perlu ngejar-ngerjain deadline. Karyawan Digital lo kerja tanpa libur, tanpa lembur, tanpa minta naik gaji.</p></div></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ========== PRICING ========== -->
-  <section class="sec" id="harga">
-    <div class="container">
-      <div class="divider rv"></div>
-      <h2 class="sec-title rv">Sekali Bayar, <span class="gold-text">Pake Selamanya</span></h2>
-      <p class="sec-sub rv d1">Gak ada langganan bulanan. Gak ada biaya tersembunyi. Karena ini karyawan, bukan software sewaan.</p>
-      <div class="price-card rv d2">
-        <div class="price-badge">🔥 Promo Early Bird</div>
-        <p class="price-strike">Rp 2.500.000</p>
-        <p style="color:#666;font-size:0.85rem;text-decoration:line-through">Rp 500.000</p>
-        <p class="price-amount">Rp 199rb</p>
-        <p class="price-period">Sekali bayar · Lifetime access · Semua 5 posisi</p>
-        <ul class="price-feats">
-          <li><span class="r">✓</span> AI Riset Tren — update harian topik & konten</li>
-          <li><span class="g">✓</span> AI Posting Otomatis — semua platform sosmed</li>
-          <li><span class="r">✓</span> AI Carousel Generator — template gratis, unlimited</li>
-          <li><span class="g">✓</span> AI Copywriting — caption, headline, iklan</li>
-          <li><span class="r">✓</span> AI Landing Page — generate premium landing page</li>
-          <li><span class="g">✓</span> Orkestrasi OpenClaw — semua agent jalan nyambung</li>
-          <li><span class="r">✓</span> Update fitur gratis selamanya</li>
-          <li><span class="g">✓</span> 7 hari garansi uang kembali 100%</li>
-        </ul>
-        <a href="https://lynk.id/karyawandigital" target="_blank" class="btn-main" style="width:100%;justify-content:center;font-size:1.05rem;padding:18px">🔥 Ambil Karyawan Digital Rp 199.000</a>
-        <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:14px">⏳ Harga promo ini <span style="color:var(--red-light);font-weight:600">terbatas</span> — setelah cukup pengguna naik ke Rp 500rb</p>
-      </div>
-      <p class="price-sub-text">💡 <strong>Yang lo bayar cuma ke kami sekali.</strong> Kalau nanti lo pilih pake fitur Posting Otomatis lewat Repliz, biaya langganan Repliz ditanggung lo langsung ke Repliz — itu opsional, gak wajib. Semua fitur lain tetep jalan tanpa Repliz.</p>
-    </div>
-  </section>
-
-  <!-- ========== FAQ ========== -->
-  <section class="sec" id="faq">
-    <div class="container">
-      <div class="divider rv"></div>
-      <h2 class="sec-title rv">Yang Sering <span class="red-text">Ditanya</span></h2>
-      <div class="faq-item on"><button class="faq-btn" onclick="tf(this)"><span>Ini bedanya sama beli 5 tools terpisah apa?</span><span class="faq-icon">+</span></button><div class="faq-ans">Besar. Kalau lo beli tools terpisah, lo harus setup satu-satu, mindahin data manual, dan gak ada yang nyambung satu sama lain. Karyawan Digital adalah satu sistem terintegrasi — riset tren ngasih data ke copywriter, copywriter ngasih teks ke carousel generator dan posting otomatis. Satu alur, gak ribet.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Bayar sekali doang? Gak ada biaya bulanan?</span><span class="faq-icon">+</span></button><div class="faq-ans">Nol. Gak ada langganan bulanan. Gak ada biaya tersembunyi. Lo bayar Rp 199rb sekali, dapet akses lifetime ke semua fitur + update selamanya. Ini bukan software sewa — ini kayak lo gaji karyawan tapi cuma bayar sekali seumur hidup.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Soal Repliz — ini wajib bayar lagi ya?</span><span class="faq-icon">+</span></button><div class="faq-ans">Pertanyaan bagus. Gue jelasin jujur: AI Posting Otomatis terintegrasi sama Repliz — platform auto-publish ke sosmed. Repliz kasih free trial 7 hari, setelah itu lo bayar langsung ke Repliz kalau mau lanjut pake fitur auto-publish.<br><br>Tapi dengerin: <strong>gak ada paksaan.</strong> Kalau lo gak mau bayar Repliz, lo tetep bisa:<br>• Pake semua 4 agent lainnya (Riset Tren, Carousel, Copywriting, Landing Page)<br>• Nulis konten di AI Copywriting, tinggal copy-paste manual posting — tetap lebih cepet dari pada bikin dari nol<br>• Upgrade kapan aja kalau udah siap<br><br><strong>Intinya:</strong> lo beli Karyawan Digital, dapet semua fitur. Repliz adalah opsional — kayak lo punya staff yang bisa lo suruh anter paket pake Gojek, tapi lo juga bisa anter sendiri kalau mau hemat.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Gak paham teknologi — bisa pake?</span><span class="faq-icon">+</span></button><div class="faq-ans">Bisa banget. Interface-nya sederhana, kayak chat doang. Lo gak perlu bisa coding, gak perlu paham AI, gak perlu tahu API. Tinggal masukin keyword & target pasar, dia jalan sendiri.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Kalau gak puas bisa refund?</span><span class="faq-icon">+</span></button><div class="faq-ans">7 hari garansi uang kembali 100%, tanpa tanya-tanya. Lo coba dulu, kalau emang gak cocok — bilang, gue kembalikan uang lo. Gak ada resiko.</div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Produk ini cocok buat siapa aja?</span><span class="faq-icon">+</span></button><div class="faq-ans">Karyawan Digital dibuat khusus buat:<br>• UMKM yang pengen punya konten konsisten tanpa ribet<br>• Freelancer yang mau ningkatin personal branding tanpa buang waktu<br>• Content creator yang mulai lelah ngurusin semua sendiri<br>• Pebisnis yang gak punya budget gaji tim digital marketing tetap</div></div>
-    </div>
-  </section>
-
-  <!-- ========== FINAL CTA ========== -->
-  <section class="final-cta" id="cta">
+<!-- ====== TARGET PERSONA ====== -->
+<section class="sec sec-b">
+  <div class="container">
     <div class="divider rv"></div>
-    <h2 class="rv">Sementara Kompetitor Lo<br>Masih Nyari <span class="red-text">Admin Sosmed</span>...</h2>
-    <p class="rv d1" style="color:var(--text-sub);margin-bottom:28px;max-width:450px;margin-left:auto;margin-right:auto;font-size:1rem;line-height:1.6">Lo udah punya 1 Karyawan Digital yang merangkap 5 posisi. Sekali bayar Rp 199rb — pake selamanya.</p>
-    <a href="https://lynk.id/karyawandigital" target="_blank" class="btn-main rv d2" style="font-size:1.15rem;padding:20px 48px">🔥 Ambil Karyawan Digital — Rp 199rb</a>
-    <p style="font-size:0.78rem;color:var(--text-muted);margin-top:18px" class="rv d3">7 hari garansi uang kembali · Sekali bayar · Update gratis selamanya</p>
-  </section>
+    <h2 class="sec-title rv">Karyawan Digital <span class="gold-text">Cocok Buat</span></h2>
+    <p class="sec-sub rv d1">Lo termasuk yang mana?</p>
+    <div class="pers-grid">
+      <div class="pers-card rv"><div class="pers-icon">🏪</div><div class="pers-text"><h4>Pemilik UMKM & Toko</h4><p>Bosan urus konten sendiri, capek ngejar-ngejar admin sosmed yang sering hilang. Pengen punya sistem yang jalan terus tanpa ribet.</p></div></div>
+      <div class="pers-card rv d1"><div class="pers-icon">💼</div><div class="pers-text"><h4>Freelancer & Solopreneur</h4><p>Mau ningkatin personal branding & dapet klien baru, tapi gak punya waktu buat bikin konten konsisten tiap hari.</p></div></div>
+      <div class="pers-card rv d2"><div class="pers-icon">🎬</div><div class="pers-text"><h4>Content Creator</h4><p>Mulai kewalahan ngurusin jadwal posting, bikin caption, desain thumbnail — padahal lo harus fokus bikin konten utama.</p></div></div>
+      <div class="pers-card rv d3"><div class="pers-icon">🏢</div><div class="pers-text"><h4>Karyawan yang Mau Side Hustle</h4><p>Pengen punya bisnis sampingan digital, tapi gak punya waktu buat ngurusin marketing dari nol. Biar AI yang kerja.</p></div></div>
+      <div class="pers-card rv d4"><div class="pers-icon">📈</div><div class="pers-text"><h4>Coach & Mentor Online</h4><p>Punya ilmu atau skill, mau jual course/ebook, tapi bingung cara promosi & bikin landing page sendiri.</p></div></div>
+      <div class="pers-card rv d5"><div class="pers-icon">🚀</div><div class="pers-text"><h4>Siapa Aja yang Mau Naik Level</h4><p>Lo sadar digital marketing adalah kunci, tapi budget terbatas & gak tau mulai dari mana. Ini jawabannya.</p></div></div>
+    </div>
+  </div>
+</section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer">
-    <div class="footer-brand">🧑‍💻 Karyawan Digital</div>
-    <p>© 2026 KaryawanDigital.my.id — 1 Orang, 5 Posisi. Gaji Sekali.</p>
-    <p style="margin-top:6px">Dibuat buat UMKM & freelancer Indonesia yang siap naik level 🚀</p>
-  </footer>
+<!-- ====== FOUNDER LETTER ====== -->
+<section class="sec sec-a">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Dari <span class="red-text">Founder</span> Karyawan Digital</h2>
+    <p class="sec-sub rv d1">Kenapa gue bikin ini — dan kenapa lo harus peduli.</p>
+    <div class="letter-box rv d2">
+      <div class="dear">Dear Sobat Digital,</div>
+      <p>Gue tau rasanya jadi orang yang harus ngerjain semuanya sendiri. Riset konten, nulis caption, bikin desain, posting ke 5 platform, bales komen — sambil <em>juga</em> harus ngurus produk, customer, dan keuangan.</p>
+      <p>Gue coba cari solusi: hiring tim? Mahal. Pake tools terpisah? Ribet, data gak nyambung, bayar langganan 5 aplikasi beda-beda. Pake freelancer? Bulan ini rajin, besok hilang kontak.</p>
+      <p>Maka gue bikin <strong>Karyawan Digital</strong>. Satu sistem terorkestrasi yang menggabungkan 5 peran digital marketing dalam satu alur kerja. Dia gak pernah sakit, gak pernah minta cuti, dan gak pernah minta naik gaji. Lo bayar SEKALI — dia kerja selamanya.</p>
+      <p>Ini bukan tools. Ini <em>tim lo</em>.</p>
+      <div class="sign">— Founder, Karyawan Digital</div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    function tf(b){var i=b.closest('.faq-item'),a=i.classList.contains('on');document.querySelectorAll('.faq-item').forEach(function(e){e.classList.remove('on')});if(!a)i.classList.add('on')}
-    document.querySelector('.faq-item')?.classList.add('on');
-    var ro=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:0.12});
-    document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
-  </script>
+<!-- ====== PROBLEM ====== -->
+<section class="sec sec-b">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Capek <span class="red-text">Gaji Tim Digital</span> Marketing?</h2>
+    <p class="sec-sub rv d1">Atau malah lo sendiri yang ngerjain semua?</p>
+    <ul class="prob-list">
+      <li class="rv"><div class="icon">💸</div><div><h4>Gaji tim digital = Rp 8-15 juta per bulan</h4><p>Dan itu baru 1-2 orang. Belum tunjangan, lembur, bonus.</p></div></li>
+      <li class="rv d1"><div class="icon">🔄</div><div><h4>Freelancer gonta-ganti — hasil gak konsisten</h4><p>Briefing ulang tiap ganti orang, quality gak stabil.</p></div></li>
+      <li class="rv d2"><div class="icon">😮‍💨</div><div><h4>Lo jadi "orang serabutan" — riset, tulis, desain, posting sendiri</h4><p>Bisnis lo berhenti di titik lo. Padahal lo harus fokus ke produk.</p></div></li>
+      <li class="rv d3"><div class="icon">📉</div><div><h4>Konten gak konsisten — engagement drop</h4><p>Soalnya gak ada sistem yang jalan otomatis.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====== SOLUTION ====== -->
+<section class="sec sec-a">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Sekarang — Lo Punya<br><span class="gold-text">1 Karyawan Digital</span></h2>
+    <p class="sec-sub rv d1">Dia kerja 24/7. Merangkap 5 posisi. Lo bayar cukup SEKALI.</p>
+    <div class="sol-card rv d2">
+      <div class="big-icon">🧑‍💻</div>
+      <h3>Kenalin — Karyawan Digital</h3>
+      <p>Bukan kumpulan tools. Tapi satu AI agent utuh yang ngehandle seluruh operasional digital marketing UMKM. Dari riset konten, bikin materi, posting, sampe generate landing page — semua dalam satu alur terorkestrasi.</p>
+      <br><p style="font-size:0.82rem;color:var(--text-muted)">⚡ Powered by OpenClaw — 5 AI agent jalan bareng sebagai satu kesatuan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 5 POSITIONS ====== -->
+<section class="sec sec-b" id="posisi">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Dia <span class="red-text">Merangkap 5 Posisi</span></h2>
+    <p class="sec-sub rv d1">Dan gak pernah minta gaji bulanan.</p>
+    <div class="pos-grid">
+      <div class="pos-card rv"><div class="pos-num">01</div><div class="icon rb">📊</div><div class="pos-title">Posisi 1 — Riset Pasar</div><h3>AI Riset Tren</h3><p>Nyari topik konten & tren yang lagi naik di niche lo. Gak perlu mantengin Google Trends atau TikTok berjam-jam.</p></div>
+      <div class="pos-card rv d1"><div class="pos-num">02</div><div class="icon gb">📱</div><div class="pos-title">Posisi 2 — Admin Sosmed</div><h3>AI Posting Otomatis</h3><p>Auto-publish konten ke semua platform. Terintegrasi Repliz — gratis 7 hari trial. Setelah itu terserah lo mau lanjut bayar Repliz atau posting manual.</p></div>
+      <div class="pos-card rv d2"><div class="pos-num">03</div><div class="icon rb">🎨</div><div class="pos-title">Posisi 3 — Desainer Grafis</div><h3>AI Carousel Generator</h3><p>Bikin carousel Instagram/LinkedIn siap posting — tinggal masukin teks, desain otomatis. Template gratis, gak perlu bayar ekstra.</p></div>
+      <div class="pos-card rv d3"><div class="pos-num">04</div><div class="icon gb">✍️</div><div class="pos-title">Posisi 4 — Copywriter</div><h3>AI Copywriting</h3><p>Bikin caption, headline, deskripsi produk, sampe teks iklan. Nada bicara bisa lo tentuin — tinggal kasih keyword, dia nulis.</p></div>
+      <div class="pos-card rv d4"><div class="pos-num">05</div><div class="icon rb">🌐</div><div class="pos-title">Posisi 5 — Web Developer</div><h3>AI Landing Page</h3><p>Generate landing page premium — dark mode, gold accent, siap pake buat jualan atau link in bio. Gak perlu coding.</p></div>
+    </div>
+    <div class="pos-note rv d5"><strong>🧠 Yang bikin beda:</strong> Bukan 5 tools terpisah. Semua agent jalan terorkestrasi dalam satu alur — data riset tren langsung dipake konten, konten langsung didesain & diposting. Nyambung semua.</div>
+  </div>
+</section>
+
+<!-- ====== COMPARE TABLE ====== -->
+<section class="sec sec-a">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Karyawan Digital <span class="red-text">vs</span> Cara Lama</h2>
+    <p class="sec-sub rv d1">Bandingin sendiri mana yang lebih cerdas.</p>
+    <table class="cmp-table rv d2">
+      <thead><tr><th></th><th>Manual / Hiring</th><th>Karyawan Digital</th></tr></thead>
+      <tbody>
+        <tr><td>Biaya per bulan</td><td>Rp 5-15 juta</td><td class="ck">Rp 0</td></tr>
+        <tr><td>Biaya sekali</td><td class="xx">—</td><td class="ck">Rp 199rb</td></tr>
+        <tr><td>Posting konten tiap hari</td><td class="xx">✗ 1-2 jam/hari</td><td class="ck">✓ Auto</td></tr>
+        <tr><td>Riset tren & topik</td><td class="xx">✗ Manual</td><td class="ck">✓ AI</td></tr>
+        <tr><td>Bikin desain/carousel</td><td class="xx">✗ Sewa desainer</td><td class="ck">✓ Auto</td></tr>
+        <tr><td>Generate landing page</td><td class="xx">✗ Sewa web dev</td><td class="ck">✓ Auto</td></tr>
+        <tr><td>Tulis caption & copy</td><td class="xx">✗ Bayar copywriter</td><td class="ck">✓ AI</td></tr>
+        <tr><td>Orkestrasi terintegrasi</td><td class="xx">✗ Pake 5 tools beda</td><td class="ck">✓ Satu sistem</td></tr>
+      </tbody>
+    </table>
+    <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:16px">* AI Posting Otomatis terintegrasi Repliz (gratis 7 hari, opsional berbayar langsung ke Repliz)</p>
+  </div>
+</section>
+
+<!-- ====== HOW IT WORKS ====== -->
+<section class="sec sec-b">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Gimana <span class="red-text">Cara Kerjanya</span>?</h2>
+    <p class="sec-sub rv d1">3 langkah doang. Udah punya 1 tim digital marketing.</p>
+    <ul class="step-list">
+      <li class="rv"><div class="step-num">1</div><div class="step-content"><h5>Pilih Niche & Target Audiens Lo</h5><p>Bisnis apa, target pasar siapa, mau di platform mana. Cukup set sekali.</p></div></li>
+      <li class="rv d1"><div class="step-num">2</div><div class="step-content"><h5>Karyawan Digital Lo Jalan 24/7</h5><p>Dia riset tren → bikin konten → generate carousel → tulis copy → posting. Semua nyambung dalam satu alur. Lo tinggal pantau.</p></div></li>
+      <li class="rv d2"><div class="step-num">3</div><div class="step-content"><h5>Lo Fokus ke Bisnis — Urusan Digital Urusan Dia</h5><p>Gak perlu briefing tiap hari. Karyawan Digital lo kerja tanpa libur, tanpa minta naik gaji.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====== WHY CHEAP ====== -->
+<section class="sec sec-a">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Kenapa <span class="gold-text">Cuma Rp 199rb?</span></h2>
+    <p class="sec-sub rv d1">Bukannya murah — tapi lo dateng di waktu yang tepat.</p>
+    <div class="why-box rv d2">
+      <h3>Ini Bukan Harga "Murahan"</h3>
+      <p>Ini <strong class="acc">Early Bird Price</strong>. Kita baru launching, dan gue sengaja ngasih harga spesial buat 500 orang pertama yang percaya sama produk ini. Gue butuh early adopter yang bakal dapet benefit maksimal — dan sebaliknya, feedback lo bikin Karyawan Digital makin baik ke depannya.</p>
+      <p>Setelah 500 pengguna tercapai — <strong>harganya naik permanen</strong> ke Rp 500.000. Yang udah beli di harga promo, tetep akses lifetime selamanya. Gak bakal diminta nambah.</p>
+      <p style="font-size:0.82rem;color:var(--text-muted)"><span class="acc">💡 Analogi:</span> Lo beli saham IPO — harga masih murah, pas udah go public naik sendiri. Lo yang early dapet cuan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PRICING ====== -->
+<section class="sec sec-b" id="harga">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Sekali Bayar, <span class="gold-text">Pake Selamanya</span></h2>
+    <p class="sec-sub rv d1">Gak ada langganan. Gak ada biaya tersembunyi. Karena ini karyawan, bukan software sewaan.</p>
+    <div class="price-card rv d2">
+      <div class="price-badge">🔥 Promo Early Bird</div>
+      <p class="price-strike">Rp 2.500.000</p>
+      <p style="color:#666;font-size:0.85rem;text-decoration:line-through">Rp 500.000</p>
+      <p class="price-amount">Rp 199rb</p>
+      <p class="price-period">Sekali bayar · Lifetime access · Semua 5 posisi</p>
+      <ul class="price-feats">
+        <li><span class="r">✓</span> AI Riset Tren — update harian</li>
+        <li><span class="g">✓</span> AI Posting Otomatis — semua platform</li>
+        <li><span class="r">✓</span> AI Carousel Generator — template gratis</li>
+        <li><span class="g">✓</span> AI Copywriting — caption, headline, iklan</li>
+        <li><span class="r">✓</span> AI Landing Page — premium auto generate</li>
+        <li><span class="g">✓</span> Orkestrasi OpenClaw — semua nyambung</li>
+        <li><span class="r">✓</span> Update fitur gratis selamanya</li>
+        <li><span class="g">✓</span> 7 hari garansi uang kembali 100%</li>
+      </ul>
+      <a href="https://lynk.id/karyawandigital" target="_blank" class="btn-main" style="width:100%;justify-content:center;font-size:1.05rem;padding:18px">🔥 Ambil Karyawan Digital Rp 199.000</a>
+      <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:14px">⏳ Harga promo <span style="color:var(--red-light);font-weight:600">terbatas</span> — naik ke Rp 500rb setelah 500 pengguna</p>
+    </div>
+    <p class="price-sub-text">💡 <strong>Yang lo bayar cuma ke kami sekali.</strong> Fitur Posting Otomatis terintegrasi Repliz (gratis 7 hari, setelah itu opsional bayar langsung ke Repliz). Semua fitur lain tetap jalan tanpa Repliz.</p>
+  </div>
+</section>
+
+<!-- ====== GUARANTEE ====== -->
+<section class="sec sec-a">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Gak Puas? <span class="gold-text">Uang Kembali</span></h2>
+    <p class="sec-sub rv d1">Lo gak rugi apa-apa.</p>
+    <div class="guar-wrap rv d2">
+      <div class="guar-seal"><div class="num">7</div><div class="lbl">Hari<br>Garansi</div></div>
+      <div class="guar-text"><h4>Garansi 7 Hari — 100% Uang Kembali</h4><p>Lo coba Karyawan Digital selama 7 hari. Kalau ternyata gak cocok atau gak sesuai ekspektasi — bilang aja. <strong>Gue kembalikan uang lo penuh, tanpa tanya-tanya.</strong><br><br>Kenapa gue berani ngasih garansi? Karena gue yakin produk ini bakal berguna buat lo. Tapi kalau ternyata enggak — lo gak perlu nanggung resiko.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="sec sec-b" id="faq">
+  <div class="container">
+    <div class="divider rv"></div>
+    <h2 class="sec-title rv">Yang Sering <span class="red-text">Ditanya</span></h2>
+    <div class="faq-item on"><button class="faq-btn" onclick="tf(this)"><span>Ini bedanya sama beli 5 tools terpisah apa?</span><span class="faq-icon">+</span></button><div class="faq-ans">Besar. Tools terpisah gak saling nyambung — data riset harus lo copy manual ke copywriter, copy harus lo paste ke desain, desain harus lo upload ke posting. Karyawan Digital satu sistem: riset tren ngasih data ke AI Copywriting → Copywriting ngasih teks ke Carousel Generator & Posting Otomatis. Satu alur, gak ribet.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Bayar sekali? Gak ada biaya bulanan sama sekali?</span><span class="faq-icon">+</span></button><div class="faq-ans">Nol. Gak ada langganan. Gak ada biaya tersembunyi. Lo bayar Rp 199rb sekali, dapet akses lifetime ke semua fitur + update selamanya. Kecuali lo pilih pake fitur Repliz (opsional) — itu bayar langsung ke Repliz, bukan ke kami.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Soal Repliz — ini wajib bayar lagi ya?</span><span class="faq-icon">+</span></button><div class="faq-ans">Gue jelasin jujur: AI Posting Otomatis terintegrasi Repliz — platform auto-publish ke sosmed. Repliz kasih free trial 7 hari. Setelah itu, kalau lo mau lanjut auto-publish, lo bayar langsung ke Repliz. <strong>Tapi gak ada paksaan.</strong> Lo tetep bisa pake semua 4 agent lainnya. Kalau gak mau bayar Repliz, lo tinggal copy-paste dari AI Copywriting & posting manual — tetap lebih cepet dari bikin dari nol.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Gak paham teknologi — bisa pake?</span><span class="faq-icon">+</span></button><div class="faq-ans">Bisa. Interface-nya sederhana, kayak chat. Gak perlu coding, gak perlu paham AI, gak perlu API. Tinggal masukin keyword & target pasar, dia jalan.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="tf(this)"><span>Kalau gak puas, beneran bisa refund?</span><span class="faq-icon">+</span></button><div class="faq-ans">7 hari garansi uang kembali 100%, tanpa tanya-tanya. Lo coba dulu — kalau emang gak cocok, bilang. Gak ada resiko sama sekali.</div></div>
+  </div>
+</section>
+
+<!-- ====== FINAL CTA ====== -->
+<section class="final-cta" id="cta">
+  <div class="divider rv"></div>
+  <h2 class="rv">Sementara Kompetitor Lo<br>Masih Nyari <span class="red-text">Admin Sosmed</span>...</h2>
+  <p class="rv d1" style="color:var(--text-sub);margin-bottom:28px;max-width:450px;margin-left:auto;margin-right:auto;font-size:1rem;line-height:1.6">Lo udah punya 1 Karyawan Digital yang merangkap 5 posisi. Sekali bayar Rp 199rb — pake selamanya.</p>
+  <a href="https://lynk.id/karyawandigital" target="_blank" class="btn-yellow rv d2">🔥 Ya, Gue Mau Karyawan Digital Rp 199rb!</a>
+  <p style="font-size:0.78rem;color:var(--text-muted);margin-top:18px" class="rv d3">7 hari garansi uang kembali · Sekali bayar · Update gratis selamanya</p>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="footer-brand">🧑‍💻 Karyawan Digital</div>
+  <p>© 2026 KaryawanDigital.my.id — 1 Orang, 5 Posisi. Gaji Sekali.</p>
+  <p style="margin-top:6px">Dibuat buat UMKM & freelancer Indonesia yang siap naik level 🚀</p>
+</footer>
+
+<script>
+function tf(b){var i=b.closest('.faq-item'),a=i.classList.contains('on');document.querySelectorAll('.faq-item').forEach(function(e){e.classList.remove('on')});if(!a)i.classList.add('on')}
+document.querySelector('.faq-item')?.classList.add('on');
+var ro=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:0.12});
+document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+// Countdown timer (3 days from now)
+(function(){var e=new Date;e.setDate(e.getDate()+3);function t(){var n=new Date,r=Math.max(0,e-n),d=Math.floor(r/864e5),h=Math.floor(r%864e5/36e5),m=Math.floor(r%36e5/6e4),s=Math.floor(r%6e4/1e3);document.getElementById('tbd')&&(document.getElementById('tbd').textContent=String(d).padStart(2,'0'));document.getElementById('tbh')&&(document.getElementById('tbh').textContent=String(h).padStart(2,'0'));document.getElementById('tbm')&&(document.getElementById('tbm').textContent=String(m).padStart(2,'0'));document.getElementById('tbs')&&(document.getElementById('tbs').textContent=String(s).padStart(2,'0'))}t();setInterval(t,1e3)})();
+</script>
 </body>
 </html>
